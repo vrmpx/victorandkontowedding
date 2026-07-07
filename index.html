@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Victor &amp; Konto — 2027</title>
+  <meta name="description"
+    content="We're getting married. Two celebrations: an afternoon at the farm, and a weekend in Mexico City." />
+
+  <!--
+  ✎ EDIT ME — everything you'll want to change is marked with  ✎  comments:
+     • Names (title above + hero + footer + monogram)
+     • Dates & venues (hero, countdown target in <script>, the two event cards)
+     • Google Form RSVP link (search: RSVP_FORM_URL)
+     • Photos: drop files into an /images folder next to this file.
+       Missing photos degrade to labeled contact-sheet tiles, so this
+       looks finished before you've added a single picture.
+  Optimize photos before committing: WebP/AVIF, ~1600px wide max, and keep
+  the <img> width/height attributes so layout doesn't jump.
+
+  Palette (approx sRGB from your moodboard CMYK):
+     Dark Amaranth #801F33 · Steel Blue #86A1BF · Old Gold #B3A100
+     Dust Olive #727D3D · Pale Sand #E8E6C7
+-->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Hanken+Grotesk:wght@400;500;600&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    :root {
+      --ink: #2B241C;
+      /* warm espresso — text */
+      --paper: #EFEDD8;
+      /* light pale sand — base */
+      --sand: #E8E6C7;
+      /* pale sand — panels */
+      --panel: #DEDBBA;
+      /* deeper sand */
+      --amaranth: #801F33;
+      /* dark amaranth — primary accent */
+      --amaranth-deep: #5C1626;
+      --steel: #86A1BF;
+      /* steel blue */
+      --gold: #B3A100;
+      /* old gold */
+      --olive: #727D3D;
+      /* dust olive */
+      --line: rgba(43, 36, 28, .16);
+
+      --display: "Fraunces", Georgia, serif;
+      --body: "Hanken Grotesk", system-ui, sans-serif;
+      --mono: "Courier Prime", "Courier New", monospace;
+
+      --pad: clamp(1.25rem, 5vw, 6rem);
+      --maxw: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    body {
+      font-family: var(--body);
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--display);
+      font-weight: 400;
+      line-height: 1.03;
+      font-variation-settings: "SOFT" 30, "WONK" 0, "opsz" 144;
+      letter-spacing: -0.01em;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    /* analog film-slate label */
+    .label {
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--amaranth);
+    }
+
+    .eyebrow {
+      font-family: var(--display);
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--amaranth);
+    }
+
+    .wrap {
+      max-width: var(--maxw);
+      margin-inline: auto;
+      padding-inline: var(--pad);
+    }
+
+    section {
+      padding-block: clamp(4rem, 10vw, 8.5rem);
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--amaranth);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    /* ---------- NAV ---------- */
+    header.nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem var(--pad);
+      background: color-mix(in srgb, var(--paper) 84%, transparent);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .monogram {
+      font-family: var(--display);
+      font-size: 1.35rem;
+      letter-spacing: 0.04em;
+      font-variation-settings: "SOFT" 50, "opsz" 40;
+    }
+
+    .monogram span {
+      color: var(--amaranth);
+      font-style: italic;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(1rem, 2.5vw, 2.2rem);
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      transition: opacity .2s;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+    }
+
+    .nav-links a.nav-hide {
+      display: none;
+    }
+
+    @media (min-width: 760px) {
+      .nav-links a.nav-hide {
+        display: inline;
+      }
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.75em 1.5em;
+      border-radius: 2px;
+      background: var(--amaranth);
+      color: var(--sand);
+      border: 1px solid var(--amaranth);
+      transition: transform .18s ease, background .2s ease;
+    }
+
+    .btn:hover {
+      background: var(--amaranth-deep);
+      transform: translateY(-2px);
+    }
+
+    .btn.ghost {
+      background: transparent;
+      color: var(--amaranth);
+    }
+
+    .btn.ghost:hover {
+      background: var(--amaranth);
+      color: var(--sand);
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      position: relative;
+      text-align: center;
+      padding-block: clamp(4rem, 13vw, 9rem);
+      overflow: hidden;
+    }
+
+    .hero .sky {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(55% 45% at 50% -8%, color-mix(in srgb, var(--gold) 26%, transparent), transparent 68%),
+        radial-gradient(46% 42% at 88% 12%, color-mix(in srgb, var(--steel) 30%, transparent), transparent 70%),
+        radial-gradient(42% 40% at 8% 30%, color-mix(in srgb, var(--amaranth) 12%, transparent), transparent 72%);
+    }
+
+    .hero .inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero .eyebrow {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(3.4rem, 13vw, 9.5rem);
+      font-variation-settings: "SOFT" 40, "WONK" 1, "opsz" 144;
+    }
+
+    .hero h1 .amp {
+      display: block;
+      font-style: italic;
+      color: var(--amaranth);
+      font-size: 0.42em;
+      margin-block: 0.12em;
+      font-variation-settings: "SOFT" 70, "opsz" 40;
+    }
+
+    .hero .tagline {
+      max-width: 36ch;
+      margin: 1.8rem auto 2.4rem;
+      font-size: clamp(1.05rem, 2.4vw, 1.28rem);
+      color: color-mix(in srgb, var(--ink) 84%, transparent);
+    }
+
+    .hero .cta-row {
+      display: flex;
+      gap: 0.9rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ---------- COUNTDOWN (film-slate) ---------- */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: clamp(1.2rem, 4vw, 3rem);
+      margin-top: 3.2rem;
+    }
+
+    .cd-unit {
+      text-align: center;
+      min-width: 3.5rem;
+    }
+
+    .cd-num {
+      font-family: var(--display);
+      font-size: clamp(2rem, 5.5vw, 3.4rem);
+      line-height: 1;
+      color: var(--amaranth);
+      font-variation-settings: "SOFT" 20, "opsz" 100;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .cd-label {
+      font-family: var(--mono);
+      font-size: 0.64rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-top: 0.55rem;
+      opacity: 0.65;
+    }
+
+    .sprig {
+      display: block;
+      margin: 0 auto;
+      width: 88px;
+      height: auto;
+      color: var(--gold);
+    }
+
+    /* ---------- STORY ---------- */
+    .story .wrap {
+      display: grid;
+      gap: clamp(2rem, 5vw, 4.5rem);
+      grid-template-columns: 1fr;
+      align-items: center;
+    }
+
+    @media (min-width: 860px) {
+      .story .wrap {
+        grid-template-columns: 1.1fr 0.9fr;
+      }
+    }
+
+    .story h2 {
+      font-size: clamp(2.2rem, 6vw, 3.6rem);
+      margin: 0.8rem 0 1.3rem;
+    }
+
+    .story p {
+      max-width: 52ch;
+      margin-bottom: 1.1rem;
+      color: color-mix(in srgb, var(--ink) 90%, transparent);
+    }
+
+    .story .portrait {
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      position: relative;
+      padding: 10px;
+      background: var(--sand);
+      border: 1px solid var(--line);
+      box-shadow: 0 16px 36px -24px rgba(43, 36, 28, .6);
+    }
+
+    .story .portrait .frame {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(150deg, var(--steel), var(--olive) 70%, var(--amaranth));
+    }
+
+    .story .portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .story .portrait figcaption {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      z-index: 2;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--sand);
+      letter-spacing: 0.06em;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, .5);
+    }
+
+    /* ---------- CELEBRATIONS ---------- */
+    .events {
+      background: var(--sand);
+    }
+
+    .events .head {
+      text-align: center;
+      margin-bottom: clamp(2.5rem, 6vw, 4rem);
+    }
+
+    .events h2 {
+      font-size: clamp(2.2rem, 6vw, 3.6rem);
+      margin-top: 0.6rem;
+    }
+
+    .cards {
+      display: grid;
+      gap: clamp(1.2rem, 3vw, 2rem);
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 780px) {
+      .cards {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .card {
+      background: var(--paper);
+      padding: clamp(1.6rem, 3.5vw, 2.6rem);
+      border: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px -22px rgba(43, 36, 28, .5);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset-inline: 0;
+      top: 0;
+      height: 4px;
+    }
+
+    .card.farm::before {
+      background: var(--olive);
+    }
+
+    .card.cdmx::before {
+      background: linear-gradient(90deg, var(--amaranth), var(--gold));
+    }
+
+    .card .place {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .card.farm .place {
+      color: var(--olive);
+    }
+
+    .card.cdmx .place {
+      color: var(--amaranth);
+    }
+
+    .card h3 {
+      font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+      margin: 0.5rem 0 0.2rem;
+    }
+
+    .card .date {
+      font-family: var(--display);
+      font-style: italic;
+      font-size: 1.15rem;
+      margin-bottom: 1.3rem;
+      color: var(--amaranth);
+    }
+
+    .card.farm .date {
+      color: var(--olive);
+    }
+
+    .card p {
+      color: color-mix(in srgb, var(--ink) 88%, transparent);
+      margin-bottom: 1.3rem;
+    }
+
+    .card dl {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.4rem 1rem;
+      font-size: 0.92rem;
+    }
+
+    .card dt {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      align-self: center;
+    }
+
+    /* ---------- GALLERY (contact sheet) ---------- */
+    .gallery .head {
+      text-align: center;
+      margin-bottom: clamp(2.2rem, 5vw, 3.4rem);
+    }
+
+    .gallery h2 {
+      font-size: clamp(2.2rem, 6vw, 3.6rem);
+      margin-top: 0.5rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: clamp(0.8rem, 2vw, 1.3rem);
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-flow: dense;
+    }
+
+    @media (min-width: 720px) {
+      .grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .grid figure {
+      position: relative;
+      margin: 0;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      padding: 8px 8px 26px;
+      background: var(--sand);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 24px -20px rgba(43, 36, 28, .7);
+    }
+
+    .grid figure .shot {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(135deg, var(--steel), var(--olive));
+    }
+
+    .grid figure:nth-child(3n) .shot {
+      background: linear-gradient(135deg, var(--olive), #4f5a2c);
+    }
+
+    .grid figure:nth-child(4n) .shot {
+      background: linear-gradient(135deg, var(--amaranth), var(--gold));
+    }
+
+    .grid figure:nth-child(5n) .shot {
+      background: linear-gradient(135deg, var(--gold), var(--olive));
+    }
+
+    .grid figure.tall {
+      grid-row: span 2;
+      aspect-ratio: 1 / 2;
+    }
+
+    .grid figure.wide {
+      grid-column: span 2;
+      aspect-ratio: 2 / 1;
+    }
+
+    .grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .5s ease;
+    }
+
+    .grid figure:hover img {
+      transform: scale(1.05);
+    }
+
+    .grid figcaption {
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      bottom: 7px;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.05em;
+      color: var(--ink);
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .grid figcaption .n {
+      color: var(--amaranth);
+    }
+
+    /* ---------- TRAVEL (amaranth feature) ---------- */
+    .stay {
+      background: var(--amaranth);
+      color: var(--sand);
+    }
+
+    .stay a {
+      color: var(--sand);
+      text-underline-offset: 3px;
+    }
+
+    .stay .label {
+      color: color-mix(in srgb, var(--gold) 80%, white);
+    }
+
+    .stay .eyebrow {
+      color: var(--sand);
+    }
+
+    .stay h2 {
+      font-size: clamp(2rem, 5.5vw, 3.2rem);
+      color: var(--sand);
+    }
+
+    .stay .cols {
+      display: grid;
+      gap: clamp(1.6rem, 4vw, 3rem);
+      grid-template-columns: 1fr;
+      margin-top: 2.4rem;
+    }
+
+    @media (min-width: 760px) {
+      .stay .cols {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .stay h3 {
+      color: var(--sand);
+      font-family: var(--display);
+      font-size: 1.4rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .stay p {
+      color: color-mix(in srgb, var(--sand) 82%, transparent);
+      margin-bottom: 0.9rem;
+      max-width: 46ch;
+    }
+
+    /* ---------- FAQ ---------- */
+    .faq h2 {
+      font-size: clamp(2rem, 5.5vw, 3.2rem);
+      text-align: center;
+      margin-bottom: clamp(2rem, 5vw, 3rem);
+    }
+
+    details {
+      border-top: 1px solid var(--line);
+      padding: 1.2rem 0;
+      max-width: 760px;
+      margin-inline: auto;
+    }
+
+    details:last-of-type {
+      border-bottom: 1px solid var(--line);
+    }
+
+    summary {
+      cursor: pointer;
+      list-style: none;
+      font-family: var(--display);
+      font-size: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "+";
+      color: var(--amaranth);
+      font-size: 1.5rem;
+      transition: transform .2s;
+    }
+
+    details[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    details p {
+      margin-top: 0.9rem;
+      max-width: 62ch;
+      color: color-mix(in srgb, var(--ink) 86%, transparent);
+    }
+
+    /* ---------- RSVP ---------- */
+    .rsvp {
+      text-align: center;
+      background: linear-gradient(160deg, var(--sand), var(--paper));
+    }
+
+    .rsvp h2 {
+      font-size: clamp(2.6rem, 8vw, 5rem);
+      margin-bottom: 1rem;
+    }
+
+    .rsvp p {
+      max-width: 40ch;
+      margin: 0 auto 2rem;
+      font-size: 1.1rem;
+    }
+
+    .rsvp .btn {
+      font-size: 0.9rem;
+      padding: 0.95em 2.2em;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer.foot {
+      text-align: center;
+      padding: clamp(3rem, 7vw, 5rem) var(--pad);
+      border-top: 1px solid var(--line);
+    }
+
+    footer.foot .monogram {
+      font-size: 2rem;
+    }
+
+    footer.foot p {
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      letter-spacing: 0.06em;
+      opacity: 0.6;
+      margin-top: 0.8rem;
+    }
+
+    /* ---------- SCROLL REVEAL ---------- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      .card,
+      .grid img {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="nav">
+    <!-- ✎ Monogram: your initials -->
+    <a href="#top" class="monogram" style="text-decoration:none">V <span>&amp;</span> K</a>
+    <nav class="nav-links">
+      <a href="#story" class="nav-hide">Story</a>
+      <a href="#events" class="nav-hide">Celebrations</a>
+      <a href="#travel" class="nav-hide">Travel</a>
+      <a href="#rsvp" class="btn">RSVP</a>
+    </nav>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="top">
+    <div class="sky"></div>
+    <div class="inner wrap">
+      <span class="eyebrow reveal">Together with our families, we're getting married</span>
+      <!-- ✎ Your names -->
+      <h1 class="reveal">Victor <span class="amp">&amp;</span> Konto</h1>
+      <p class="tagline reveal">Two gatherings, one long celebration — an afternoon at the farm under string lights, and
+        a weekend in Mexico City with a full band and a fuller dance floor.</p>
+      <div class="cta-row reveal">
+        <a href="#rsvp" class="btn">RSVP</a>
+        <a href="#events" class="btn ghost">The details</a>
+      </div>
+
+      <div class="countdown reveal" id="countdown" aria-label="Countdown to the Mexico City celebration">
+        <div class="cd-unit">
+          <div class="cd-num" data-days>—</div>
+          <div class="cd-label">Days</div>
+        </div>
+        <div class="cd-unit">
+          <div class="cd-num" data-hours>—</div>
+          <div class="cd-label">Hours</div>
+        </div>
+        <div class="cd-unit">
+          <div class="cd-num" data-mins>—</div>
+          <div class="cd-label">Minutes</div>
+        </div>
+        <div class="cd-unit">
+          <div class="cd-num" data-secs>—</div>
+          <div class="cd-label">Seconds</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><svg class="sprig" viewBox="0 0 120 64" fill="none" xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true">
+      <path d="M60 62 C60 46 55 40 46 36 M60 50 C60 40 66 34 76 32 M60 42 C60 34 55 30 48 27 M60 34 C60 27 66 23 73 21"
+        stroke="currentColor" stroke-width="1.3" stroke-linecap="round" />
+      <g fill="currentColor">
+        <path d="M46 36c-4-3-9-2-10 2 4 3 9 2 10-2z" />
+        <path d="M76 32c4-3 9-2 10 2-4 3-9 2-10-2z" />
+        <path d="M48 27c-3-3-8-3-10 1 3 3 8 3 10-1z" />
+        <path d="M73 21c3-3 8-3 10 1-3 3-8 3-10-1z" />
+        <circle cx="60" cy="18" r="4.2" />
+      </g>
+    </svg></div>
+
+  <!-- ================= STORY ================= -->
+  <section class="story" id="story">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="label">Our story</span>
+        <h2>How we got here</h2>
+        <!-- ✎ Replace with your own words -->
+        <p>Some love stories are a slow build and some are a lightning strike. Ours was a bit of both — a first
+          conversation that ran far too long, and every one since that we haven't wanted to end.</p>
+        <p>A few years, a couple of cities, and one very good decision later, we're doing the thing. We'd love for you
+          to be there when we do — twice, if you can manage it.</p>
+      </div>
+      <figure class="portrait reveal">
+        <div class="frame">
+          <!-- ✎ Drop a photo at images/portrait.jpg (portrait, ~4:5) -->
+          <img src="images/portrait.jpg" alt="Victor and Partner" loading="lazy" width="800" height="1000"
+            onerror="this.style.display='none'" />
+        </div>
+        <figcaption>&#9679; somewhere we love</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= CELEBRATIONS ================= -->
+  <section class="events" id="events">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="label">Save the dates</span>
+        <h2>Two celebrations</h2>
+      </div>
+      <div class="cards">
+        <!-- ✎ FARM EVENT -->
+        <article class="card farm reveal">
+          <div class="place">The Farm · United States</div>
+          <h3>An afternoon in the fields</h3>
+          <div class="date">Date to come — 2027</div>
+          <p>Long tables, string lights, and lawn games as the sun goes down. The people who've been with us from the
+            start, close to home.</p>
+          <dl>
+            <dt>Venue</dt>
+            <dd>To be announced</dd>
+            <dt>Dress</dt>
+            <dd>Garden formal</dd>
+            <dt>Mood</dt>
+            <dd>Candlelight, dried flowers, cards on the grass</dd>
+          </dl>
+        </article>
+        <!-- ✎ MEXICO CITY EVENT -->
+        <article class="card cdmx reveal">
+          <div class="place">Mexico City · México</div>
+          <h3>La boda en la ciudad</h3>
+          <div class="date">Saturday, 20 March 2027</div>
+          <p>A weekend in CDMX with a trumpet, a good bar, and marigolds everywhere. Come hungry, stay late, dance
+            badly.</p>
+          <dl>
+            <dt>Venue</dt>
+            <dd>To be announced</dd>
+            <dt>Dress</dt>
+            <dd>Cocktail attire</dd>
+            <dt>Mood</dt>
+            <dd>Mariachi, mezcal, spring in bloom</dd>
+          </dl>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= GALLERY (contact sheet) ================= -->
+  <section class="gallery" id="gallery">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="label">Contact sheet</span>
+        <h2>Us, lately</h2>
+      </div>
+      <!--
+      ✎ GALLERY PHOTOS — drop files into /images with these names.
+      Missing files fall back to a labeled tile automatically. For
+      responsive sizes, swap any <img> for:
+        <img src="images/gallery-01-800.jpg"
+             srcset="images/gallery-01-800.jpg 800w, images/gallery-01-1600.jpg 1600w"
+             sizes="(max-width:720px) 50vw, 25vw"
+             alt="…" loading="lazy" width="1600" height="1600"
+             onerror="this.style.display='none'">
+    -->
+      <div class="grid reveal">
+        <figure class="tall">
+          <div class="shot"><img src="images/gallery-01.jpg" alt="" loading="lazy" width="800" height="1600"
+              onerror="this.style.display='none'"></div>
+          <figcaption><span>the proposal</span><span class="n">01</span></figcaption>
+        </figure>
+        <figure>
+          <div class="shot"><img src="images/gallery-02.jpg" alt="" loading="lazy" width="800" height="800"
+              onerror="this.style.display='none'"></div>
+          <figcaption><span>sunday mornings</span><span class="n">02</span></figcaption>
+        </figure>
+        <figure>
+          <div class="shot"><img src="images/gallery-03.jpg" alt="" loading="lazy" width="800" height="800"
+              onerror="this.style.display='none'"></div>
+          <figcaption><span>on the road</span><span class="n">03</span></figcaption>
+        </figure>
+        <figure class="wide">
+          <div class="shot"><img src="images/gallery-04.jpg" alt="" loading="lazy" width="1600" height="800"
+              onerror="this.style.display='none'"></div>
+          <figcaption><span>cdmx, last spring</span><span class="n">04</span></figcaption>
+        </figure>
+        <figure>
+          <div class="shot"><img src="images/gallery-05.jpg" alt="" loading="lazy" width="800" height="800"
+              onerror="this.style.display='none'"></div>
+          <figcaption><span>the farm</span><span class="n">05</span></figcaption>
+        </figure>
+        <figure>
+          <div class="shot"><img src="images/gallery-06.jpg" alt="" loading="lazy" width="800" height="800"
+              onerror="this.style.display='none'"></div>
+          <figcaption><span>just because</span><span class="n">06</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TRAVEL & STAY ================= -->
+  <section class="stay" id="travel">
+    <div class="wrap">
+      <span class="label">Travel &amp; stay</span>
+      <h2>Getting there</h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Mexico City</h3>
+          <!-- ✎ Update with your hotel block / neighborhood tips -->
+          <p>Fly into Mexico City International (MEX) or Felipe Ángeles (NLU). We'll share a hotel block soon — Roma
+            Norte and Condesa are our picks for staying close to everything.</p>
+          <p>March is beautiful and the city fills up, so book flights early.</p>
+        </div>
+        <div class="reveal">
+          <h3>The Farm</h3>
+          <!-- ✎ Update with directions / nearby stays -->
+          <p>Details and a map are on the way. There'll be parking on site and a few recommended places to stay nearby
+            for anyone traveling in.</p>
+          <p>Questions in the meantime? Reach us any time — we're happy to help you plan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <h2>Good to know</h2>
+      <!-- ✎ Edit questions/answers freely -->
+      <details>
+        <summary>Do I need to come to both celebrations?</summary>
+        <p>Not at all. Come to whichever works for you — or both, if you're up for the adventure. We'll be thrilled to
+          see you at either.</p>
+      </details>
+      <details>
+        <summary>Can I bring a plus-one?</summary>
+        <p>Your invitation will note who's included. If you're unsure, just ask — we're easy.</p>
+      </details>
+      <details>
+        <summary>What should I wear?</summary>
+        <p>Garden formal at the farm, cocktail attire in Mexico City. Comfortable shoes are your friend at both.</p>
+      </details>
+      <details>
+        <summary>Will there be lawn games?</summary>
+        <p>Obviously. Grab a friend and play a game — that's an order, not a suggestion.</p>
+      </details>
+      <details>
+        <summary>How do I RSVP?</summary>
+        <p>Tap the RSVP button anywhere on this page — it takes about a minute. Please respond by the date on your
+          invitation so we can finalize counts.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ================= RSVP ================= -->
+  <section class="rsvp" id="rsvp">
+    <div class="wrap">
+      <span class="eyebrow">We can't wait to celebrate with you</span>
+      <h2>Will you join us?</h2>
+      <p>Let us know you're coming. It takes a minute, and it means everything.</p>
+      <!-- ✎ RSVP_FORM_URL — paste your Google Form link here -->
+      <a href="https://forms.gle/your-form-id" class="btn" target="_blank" rel="noopener">Open the RSVP form</a>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="monogram">V <span style="color:var(--amaranth);font-style:italic">&amp;</span> K</div>
+    <!-- ✎ Names + date -->
+    <p>VICTOR &amp; PARTNER — 2027 · MADE WITH LOVE (AND A LITTLE CSS)</p>
+  </footer>
+
+  <script>
+    /* ---------- Scroll reveal ---------- */
+    (function () {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var els = document.querySelectorAll('.reveal');
+      if (reduce || !('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('in'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12 });
+      els.forEach(function (el) { io.observe(el); });
+    })();
+
+    /* ---------- Countdown ---------- */
+    (function () {
+      // ✎ Target date — Mexico City celebration. Format: YYYY, MM-1, DD, HH, MM
+      var target = new Date(2027, 2, 20, 16, 0, 0).getTime(); // 2 = March
+      var d = document.querySelector('[data-days]'),
+        h = document.querySelector('[data-hours]'),
+        m = document.querySelector('[data-mins]'),
+        s = document.querySelector('[data-secs]');
+      function pad(n) { return String(n).padStart(2, '0'); }
+      function tick() {
+        var diff = target - Date.now();
+        if (diff <= 0) { d.textContent = h.textContent = m.textContent = s.textContent = '00'; return; }
+        d.textContent = Math.floor(diff / 86400000);
+        h.textContent = pad(Math.floor(diff % 86400000 / 3600000));
+        m.textContent = pad(Math.floor(diff % 3600000 / 60000));
+        s.textContent = pad(Math.floor(diff % 60000 / 1000));
+      }
+      tick(); setInterval(tick, 1000);
+    })();
+  </script>
+</body>
+
+</html>
