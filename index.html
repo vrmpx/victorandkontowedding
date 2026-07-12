@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Victor &amp; Partner — Save the Date</title>
-<meta name="description" content="Victor & Partner are getting married in Mexico City — 20 March 2027. Details to follow." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Victor &amp; Konto — Save the Date</title>
+  <meta name="description"
+    content="Victor & Konto are getting married in Mexico City — 20 March 2027. Details to follow." />
 
-<!-- Open Graph — makes the link unfurl nicely when texted/DM'd -->
-<meta property="og:title" content="Victor & Partner — Save the Date" />
-<meta property="og:description" content="We're getting married in Mexico City · 20 March 2027" />
-<meta property="og:type" content="website" />
+  <!-- Open Graph — makes the link unfurl nicely when texted/DM'd -->
+  <meta property="og:title" content="Victor & Konto — Save the Date" />
+  <meta property="og:description" content="We're getting married in Mexico City · 20 March 2027" />
+  <meta property="og:type" content="website" />
 
-<!--
+  <!--
   ✎ SAVE-THE-DATE LANDING PAGE
      This is the page guests hit from your QR right now. When you're ready to
      reveal the full site: rename this file's role so index.html is the full
@@ -19,149 +21,273 @@
      Edit names, date, and location below — all marked with  ✎ .
 -->
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Hanken+Grotesk:wght@400;500;600&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Hanken+Grotesk:wght@400;500;600&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet" />
 
-<style>
-  :root {
-    --ink:      #2B241C;
-    --paper:    #EFEDD8;
-    --sand:     #E8E6C7;
-    --panel:    #DEDBBA;
-    --amaranth: #801F33;
-    --steel:    #86A1BF;
-    --gold:     #B3A100;
-    --olive:    #727D3D;
-    --line:     rgba(43, 36, 28, .16);
+  <style>
+    :root {
+      --ink: #2B241C;
+      --paper: #EFEDD8;
+      --sand: #E8E6C7;
+      --panel: #DEDBBA;
+      --amaranth: #801F33;
+      --steel: #86A1BF;
+      --gold: #B3A100;
+      --olive: #727D3D;
+      --line: rgba(43, 36, 28, .16);
 
-    --display: "Fraunces", Georgia, serif;
-    --body: "Hanken Grotesk", system-ui, sans-serif;
-    --mono: "Courier Prime", "Courier New", monospace;
-    --pad: clamp(1.25rem, 5vw, 4rem);
-  }
+      --display: "Fraunces", Georgia, serif;
+      --body: "Hanken Grotesk", system-ui, sans-serif;
+      --mono: "Courier Prime", "Courier New", monospace;
+      --pad: clamp(1.25rem, 5vw, 4rem);
+    }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  body {
-    font-family: var(--body);
-    color: var(--ink);
-    background: var(--paper);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    min-height: 100svh;
-    display: flex;
-    flex-direction: column;
-    overflow-x: hidden;
-    position: relative;
-  }
+    html {
+      scroll-behavior: smooth;
+    }
 
-  /* warm hero glow */
-  .glow {
-    position: fixed; inset: 0; z-index: 0; pointer-events: none;
-    background:
-      radial-gradient(50% 42% at 50% 8%, color-mix(in srgb, var(--gold) 24%, transparent), transparent 66%),
-      radial-gradient(46% 42% at 86% 20%, color-mix(in srgb, var(--steel) 28%, transparent), transparent 70%),
-      radial-gradient(46% 44% at 10% 82%, color-mix(in srgb, var(--amaranth) 14%, transparent), transparent 72%),
-      radial-gradient(40% 40% at 82% 88%, color-mix(in srgb, var(--olive) 16%, transparent), transparent 74%);
-  }
-  /* subtle film grain */
-  .grain {
-    position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.05;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
+    body {
+      font-family: var(--body);
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      position: relative;
+    }
 
-  main {
-    position: relative; z-index: 2;
-    flex: 1;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    text-align: center;
-    padding: clamp(3rem, 8vw, 5rem) var(--pad);
-  }
+    /* warm hero glow */
+    .glow {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(50% 42% at 50% 8%, color-mix(in srgb, var(--gold) 24%, transparent), transparent 66%),
+        radial-gradient(46% 42% at 86% 20%, color-mix(in srgb, var(--steel) 28%, transparent), transparent 70%),
+        radial-gradient(46% 44% at 10% 82%, color-mix(in srgb, var(--amaranth) 14%, transparent), transparent 72%),
+        radial-gradient(40% 40% at 82% 88%, color-mix(in srgb, var(--olive) 16%, transparent), transparent 74%);
+    }
 
-  .std {
-    font-family: var(--mono); font-size: 0.8rem;
-    letter-spacing: 0.34em; text-transform: uppercase; color: var(--amaranth);
-    margin-bottom: clamp(1.6rem, 4vw, 2.4rem);
-  }
+    /* subtle film grain */
+    .grain {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.05;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
 
-  h1 {
-    font-family: var(--display); font-weight: 400;
-    font-size: clamp(3.2rem, 13vw, 8.5rem); line-height: 1.0;
-    letter-spacing: -0.015em;
-    font-variation-settings: "SOFT" 40, "WONK" 1, "opsz" 144;
-  }
-  h1 .amp {
-    display: block; font-style: italic; color: var(--amaranth);
-    font-size: 0.4em; margin-block: 0.1em;
-    font-variation-settings: "SOFT" 70, "opsz" 40;
-  }
+    main {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: clamp(3rem, 8vw, 5rem) var(--pad);
+    }
 
-  .subhead {
-    font-family: var(--display); font-style: italic;
-    font-size: clamp(1.1rem, 3vw, 1.5rem);
-    margin-top: 1.4rem; color: color-mix(in srgb, var(--ink) 82%, transparent);
-  }
+    .std {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: var(--amaranth);
+      margin-bottom: clamp(1.6rem, 4vw, 2.4rem);
+    }
 
-  .datebar {
-    display: flex; align-items: center; justify-content: center; flex-wrap: wrap;
-    gap: clamp(0.8rem, 3vw, 1.6rem);
-    margin-top: clamp(2rem, 5vw, 3rem);
-    font-family: var(--display);
-    font-size: clamp(1.5rem, 5vw, 2.6rem);
-    color: var(--amaranth);
-  }
-  .datebar .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); display: inline-block; }
-  .place {
-    font-family: var(--mono); font-size: 0.82rem; letter-spacing: 0.22em; text-transform: uppercase;
-    color: color-mix(in srgb, var(--ink) 70%, transparent);
-    margin-top: 1rem;
-  }
+    h1 {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(3.2rem, 13vw, 8.5rem);
+      line-height: 1.0;
+      letter-spacing: -0.015em;
+      font-variation-settings: "SOFT" 40, "WONK" 1, "opsz" 144;
+    }
 
-  /* sprig divider */
-  .sprig { display: block; margin: clamp(2.4rem, 5vw, 3.4rem) auto clamp(1.6rem, 4vw, 2.4rem); width: 82px; height: auto; color: var(--gold); }
+    h1 .amp {
+      display: block;
+      font-style: italic;
+      color: var(--amaranth);
+      font-size: 0.4em;
+      margin-block: 0.1em;
+      font-variation-settings: "SOFT" 70, "opsz" 40;
+    }
 
-  /* countdown */
-  .countdown { display: flex; justify-content: center; gap: clamp(1.1rem, 4vw, 2.8rem); }
-  .cd-unit { text-align: center; min-width: 3.2rem; }
-  .cd-num {
-    font-family: var(--display); font-size: clamp(1.7rem, 5vw, 2.8rem); line-height: 1;
-    color: var(--ink); font-variant-numeric: tabular-nums;
-    font-variation-settings: "SOFT" 20, "opsz" 100;
-  }
-  .cd-label { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; margin-top: 0.5rem; opacity: 0.6; }
+    .subhead {
+      font-family: var(--display);
+      font-style: italic;
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+      margin-top: 1.4rem;
+      color: color-mix(in srgb, var(--ink) 82%, transparent);
+    }
 
-  .note {
-    margin-top: clamp(2.4rem, 5vw, 3.4rem);
-    font-family: var(--mono); font-size: 0.76rem; letter-spacing: 0.08em;
-    color: color-mix(in srgb, var(--ink) 64%, transparent);
-  }
+    .datebar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: clamp(0.8rem, 3vw, 1.6rem);
+      margin-top: clamp(2rem, 5vw, 3rem);
+      font-family: var(--display);
+      font-size: clamp(1.5rem, 5vw, 2.6rem);
+      color: var(--amaranth);
+    }
 
-  footer {
-    position: relative; z-index: 2;
-    text-align: center; padding: clamp(1.5rem, 4vw, 2.4rem) var(--pad);
-  }
-  footer .monogram { font-family: var(--display); font-size: 1.5rem; letter-spacing: 0.05em; }
-  footer .monogram span { color: var(--amaranth); font-style: italic; }
+    .datebar .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: inline-block;
+    }
 
-  /* entrance */
-  .rise { opacity: 0; transform: translateY(18px); animation: rise .9s ease forwards; }
-  .rise:nth-child(1) { animation-delay: .05s; }
-  .rise:nth-child(2) { animation-delay: .18s; }
-  .rise:nth-child(3) { animation-delay: .31s; }
-  .rise:nth-child(4) { animation-delay: .44s; }
-  .rise:nth-child(5) { animation-delay: .57s; }
-  .rise:nth-child(6) { animation-delay: .70s; }
-  .rise:nth-child(7) { animation-delay: .83s; }
-  @keyframes rise { to { opacity: 1; transform: none; } }
+    .place {
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: color-mix(in srgb, var(--ink) 70%, transparent);
+      margin-top: 1rem;
+    }
 
-  @media (prefers-reduced-motion: reduce) {
-    .rise { opacity: 1; transform: none; animation: none; }
-    .grain { display: none; }
-  }
-</style>
+    /* sprig divider */
+    .sprig {
+      display: block;
+      margin: clamp(2.4rem, 5vw, 3.4rem) auto clamp(1.6rem, 4vw, 2.4rem);
+      width: 82px;
+      height: auto;
+      color: var(--gold);
+    }
+
+    /* countdown */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: clamp(1.1rem, 4vw, 2.8rem);
+    }
+
+    .cd-unit {
+      text-align: center;
+      min-width: 3.2rem;
+    }
+
+    .cd-num {
+      font-family: var(--display);
+      font-size: clamp(1.7rem, 5vw, 2.8rem);
+      line-height: 1;
+      color: var(--ink);
+      font-variant-numeric: tabular-nums;
+      font-variation-settings: "SOFT" 20, "opsz" 100;
+    }
+
+    .cd-label {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-top: 0.5rem;
+      opacity: 0.6;
+    }
+
+    .note {
+      margin-top: clamp(2.4rem, 5vw, 3.4rem);
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      color: color-mix(in srgb, var(--ink) 64%, transparent);
+    }
+
+    footer {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: clamp(1.5rem, 4vw, 2.4rem) var(--pad);
+    }
+
+    footer .monogram {
+      font-family: var(--display);
+      font-size: 1.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    footer .monogram span {
+      color: var(--amaranth);
+      font-style: italic;
+    }
+
+    /* entrance */
+    .rise {
+      opacity: 0;
+      transform: translateY(18px);
+      animation: rise .9s ease forwards;
+    }
+
+    .rise:nth-child(1) {
+      animation-delay: .05s;
+    }
+
+    .rise:nth-child(2) {
+      animation-delay: .18s;
+    }
+
+    .rise:nth-child(3) {
+      animation-delay: .31s;
+    }
+
+    .rise:nth-child(4) {
+      animation-delay: .44s;
+    }
+
+    .rise:nth-child(5) {
+      animation-delay: .57s;
+    }
+
+    .rise:nth-child(6) {
+      animation-delay: .70s;
+    }
+
+    .rise:nth-child(7) {
+      animation-delay: .83s;
+    }
+
+    @keyframes rise {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .rise {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+
+      .grain {
+        display: none;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <div class="glow"></div>
   <div class="grain"></div>
@@ -169,7 +295,7 @@
   <main>
     <div class="std rise">Save the Date</div>
     <!-- ✎ Your names -->
-    <h1 class="rise">Victor <span class="amp">&amp;</span> Partner</h1>
+    <h1 class="rise">Victor <span class="amp">&amp;</span> Konto</h1>
     <p class="subhead rise">are getting married</p>
 
     <div class="datebar rise">
@@ -180,21 +306,34 @@
     <div class="place rise">Mexico City · México</div>
 
     <svg class="sprig rise" viewBox="0 0 120 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M60 62 C60 46 55 40 46 36 M60 50 C60 40 66 34 76 32 M60 42 C60 34 55 30 48 27 M60 34 C60 27 66 23 73 21" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+      <path d="M60 62 C60 46 55 40 46 36 M60 50 C60 40 66 34 76 32 M60 42 C60 34 55 30 48 27 M60 34 C60 27 66 23 73 21"
+        stroke="currentColor" stroke-width="1.3" stroke-linecap="round" />
       <g fill="currentColor">
-        <path d="M46 36c-4-3-9-2-10 2 4 3 9 2 10-2z"/>
-        <path d="M76 32c4-3 9-2 10 2-4 3-9 2-10-2z"/>
-        <path d="M48 27c-3-3-8-3-10 1 3 3 8 3 10-1z"/>
-        <path d="M73 21c3-3 8-3 10 1-3 3-8 3-10-1z"/>
-        <circle cx="60" cy="18" r="4.2"/>
+        <path d="M46 36c-4-3-9-2-10 2 4 3 9 2 10-2z" />
+        <path d="M76 32c4-3 9-2 10 2-4 3-9 2-10-2z" />
+        <path d="M48 27c-3-3-8-3-10 1 3 3 8 3 10-1z" />
+        <path d="M73 21c3-3 8-3 10 1-3 3-8 3-10-1z" />
+        <circle cx="60" cy="18" r="4.2" />
       </g>
     </svg>
 
     <div class="countdown rise" aria-label="Countdown to the wedding">
-      <div class="cd-unit"><div class="cd-num" data-days>—</div><div class="cd-label">Days</div></div>
-      <div class="cd-unit"><div class="cd-num" data-hours>—</div><div class="cd-label">Hours</div></div>
-      <div class="cd-unit"><div class="cd-num" data-mins>—</div><div class="cd-label">Minutes</div></div>
-      <div class="cd-unit"><div class="cd-num" data-secs>—</div><div class="cd-label">Seconds</div></div>
+      <div class="cd-unit">
+        <div class="cd-num" data-days>—</div>
+        <div class="cd-label">Days</div>
+      </div>
+      <div class="cd-unit">
+        <div class="cd-num" data-hours>—</div>
+        <div class="cd-label">Hours</div>
+      </div>
+      <div class="cd-unit">
+        <div class="cd-num" data-mins>—</div>
+        <div class="cd-label">Minutes</div>
+      </div>
+      <div class="cd-unit">
+        <div class="cd-num" data-secs>—</div>
+        <div class="cd-label">Seconds</div>
+      </div>
     </div>
 
     <p class="note rise">Formal invitation &amp; details to follow</p>
@@ -210,9 +349,9 @@
       // ✎ Target date — YYYY, MM-1, DD, HH, MM  (2 = March)
       var target = new Date(2027, 2, 20, 16, 0, 0).getTime();
       var d = document.querySelector('[data-days]'),
-          h = document.querySelector('[data-hours]'),
-          m = document.querySelector('[data-mins]'),
-          s = document.querySelector('[data-secs]');
+        h = document.querySelector('[data-hours]'),
+        m = document.querySelector('[data-mins]'),
+        s = document.querySelector('[data-secs]');
       function pad(n) { return String(n).padStart(2, '0'); }
       function tick() {
         var diff = target - Date.now();
@@ -226,4 +365,5 @@
     })();
   </script>
 </body>
+
 </html>
