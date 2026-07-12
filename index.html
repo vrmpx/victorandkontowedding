@@ -95,12 +95,44 @@
       position: relative;
       z-index: 2;
       flex: 1;
+      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      text-align: center;
+      gap: clamp(2.2rem, 5vw, 3.2rem);
       padding: clamp(3rem, 8vw, 5rem) var(--pad);
+    }
+
+    .hero-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: clamp(1.8rem, 5vw, 3.4rem);
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .hero-text {
+      text-align: center;
+    }
+
+    @media (min-width: 820px) {
+      .hero-row {
+        flex-direction: row;
+        justify-content: center;
+        gap: clamp(2.4rem, 5vw, 4.5rem);
+      }
+
+      .hero-text {
+        text-align: left;
+        flex: 1;
+        max-width: 30rem;
+      }
+
+      .hero-text .datebar {
+        justify-content: flex-start;
+      }
     }
 
     .std {
@@ -167,11 +199,68 @@
       margin-top: 1rem;
     }
 
+    /* framed photo */
+    .photo-wrap {
+      flex-shrink: 0;
+    }
+
+    .photo {
+      width: min(78vw, 320px);
+      margin: 0;
+      padding: 12px 12px 34px;
+      background: var(--sand);
+      border: 1px solid var(--line);
+      box-shadow: 0 24px 50px -26px rgba(43, 36, 28, .72);
+      transform: rotate(-2.5deg);
+    }
+
+    @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+      .photo {
+        transition: transform .45s cubic-bezier(.2, .7, .2, 1);
+      }
+
+      .photo:hover {
+        transform: rotate(0deg) scale(1.015);
+      }
+    }
+
+    .photo .shot {
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(150deg, var(--steel), var(--olive) 65%, var(--amaranth));
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo figcaption {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: center;
+      margin-top: 13px;
+      color: color-mix(in srgb, var(--ink) 66%, transparent);
+    }
+
+    /* finale band */
+    .finale {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
     /* sprig divider */
     .sprig {
       display: block;
-      margin: clamp(2.4rem, 5vw, 3.4rem) auto clamp(1.6rem, 4vw, 2.4rem);
-      width: 82px;
+      margin: 0 auto clamp(1.4rem, 3vw, 2rem);
+      width: 78px;
       height: auto;
       color: var(--gold);
     }
@@ -239,34 +328,7 @@
       animation: rise .9s ease forwards;
     }
 
-    .rise:nth-child(1) {
-      animation-delay: .05s;
-    }
-
-    .rise:nth-child(2) {
-      animation-delay: .18s;
-    }
-
-    .rise:nth-child(3) {
-      animation-delay: .31s;
-    }
-
-    .rise:nth-child(4) {
-      animation-delay: .44s;
-    }
-
-    .rise:nth-child(5) {
-      animation-delay: .57s;
-    }
-
-    .rise:nth-child(6) {
-      animation-delay: .70s;
-    }
-
-    .rise:nth-child(7) {
-      animation-delay: .83s;
-    }
-
+    /* stagger delays are set inline per element */
     @keyframes rise {
       to {
         opacity: 1;
@@ -293,50 +355,68 @@
   <div class="grain"></div>
 
   <main>
-    <div class="std rise">Save the Date</div>
-    <!-- ✎ Your names -->
-    <h1 class="rise">Victor <span class="amp">&amp;</span> Konto</h1>
-    <p class="subhead rise">are getting married</p>
-
-    <div class="datebar rise">
-      <!-- ✎ Your date -->
-      <span>20 March 2027</span>
-    </div>
-    <!-- ✎ Location -->
-    <div class="place rise">Mexico City · México</div>
-
-    <svg class="sprig rise" viewBox="0 0 120 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M60 62 C60 46 55 40 46 36 M60 50 C60 40 66 34 76 32 M60 42 C60 34 55 30 48 27 M60 34 C60 27 66 23 73 21"
-        stroke="currentColor" stroke-width="1.3" stroke-linecap="round" />
-      <g fill="currentColor">
-        <path d="M46 36c-4-3-9-2-10 2 4 3 9 2 10-2z" />
-        <path d="M76 32c4-3 9-2 10 2-4 3-9 2-10-2z" />
-        <path d="M48 27c-3-3-8-3-10 1 3 3 8 3 10-1z" />
-        <path d="M73 21c3-3 8-3 10 1-3 3-8 3-10-1z" />
-        <circle cx="60" cy="18" r="4.2" />
-      </g>
-    </svg>
-
-    <div class="countdown rise" aria-label="Countdown to the wedding">
-      <div class="cd-unit">
-        <div class="cd-num" data-days>—</div>
-        <div class="cd-label">Days</div>
+    <div class="hero-row">
+      <div class="photo-wrap rise" style="animation-delay:.05s">
+        <figure class="photo">
+          <div class="shot">
+            <!-- ✎ Drop your photo at images/save-the-date.jpg (portrait ~4:5 looks best) -->
+            <img src="Images/1O6A4312.jpg" alt="Victor and Konto" onerror="this.style.display='none'" />
+          </div>
+          <!-- ✎ Caption -->
+          <figcaption>Mexico City &middot; 2027</figcaption>
+        </figure>
       </div>
-      <div class="cd-unit">
-        <div class="cd-num" data-hours>—</div>
-        <div class="cd-label">Hours</div>
-      </div>
-      <div class="cd-unit">
-        <div class="cd-num" data-mins>—</div>
-        <div class="cd-label">Minutes</div>
-      </div>
-      <div class="cd-unit">
-        <div class="cd-num" data-secs>—</div>
-        <div class="cd-label">Seconds</div>
+
+      <div class="hero-text">
+        <div class="std rise" style="animation-delay:.20s">Save the Date</div>
+        <!-- ✎ Your names -->
+        <h1 class="rise" style="animation-delay:.32s">Victor <span class="amp">&amp;</span> Konto</h1>
+        <p class="subhead rise" style="animation-delay:.44s">are getting married</p>
+        <div class="datebar rise" style="animation-delay:.56s">
+          <!-- ✎ Your date -->
+          <span>20 March 2027</span>
+        </div>
+        <!-- ✎ Location -->
+        <div class="place rise" style="animation-delay:.68s">Mexico City · México</div>
       </div>
     </div>
 
-    <p class="note rise">Formal invitation &amp; details to follow</p>
+    <div class="finale">
+      <svg class="sprig rise" style="animation-delay:.80s" viewBox="0 0 120 64" fill="none"
+        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path
+          d="M60 62 C60 46 55 40 46 36 M60 50 C60 40 66 34 76 32 M60 42 C60 34 55 30 48 27 M60 34 C60 27 66 23 73 21"
+          stroke="currentColor" stroke-width="1.3" stroke-linecap="round" />
+        <g fill="currentColor">
+          <path d="M46 36c-4-3-9-2-10 2 4 3 9 2 10-2z" />
+          <path d="M76 32c4-3 9-2 10 2-4 3-9 2-10-2z" />
+          <path d="M48 27c-3-3-8-3-10 1 3 3 8 3 10-1z" />
+          <path d="M73 21c3-3 8-3 10 1-3 3-8 3-10-1z" />
+          <circle cx="60" cy="18" r="4.2" />
+        </g>
+      </svg>
+
+      <div class="countdown rise" style="animation-delay:.92s" aria-label="Countdown to the wedding">
+        <div class="cd-unit">
+          <div class="cd-num" data-days>—</div>
+          <div class="cd-label">Days</div>
+        </div>
+        <div class="cd-unit">
+          <div class="cd-num" data-hours>—</div>
+          <div class="cd-label">Hours</div>
+        </div>
+        <div class="cd-unit">
+          <div class="cd-num" data-mins>—</div>
+          <div class="cd-label">Minutes</div>
+        </div>
+        <div class="cd-unit">
+          <div class="cd-num" data-secs>—</div>
+          <div class="cd-label">Seconds</div>
+        </div>
+      </div>
+
+      <p class="note rise" style="animation-delay:1.04s">Formal invitation &amp; details to follow</p>
+    </div>
   </main>
 
   <footer>
