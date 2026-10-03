@@ -29,921 +29,7 @@
     href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Hanken+Grotesk:wght@400;500;600&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap"
     rel="stylesheet" />
 
-  <style>
-    :root {
-      --ink: #2B241C;
-      /* warm espresso — text */
-      --paper: #EFEDD8;
-      /* light pale sand — base */
-      --sand: #E8E6C7;
-      /* pale sand — panels */
-      --panel: #DEDBBA;
-      /* deeper sand */
-      --amaranth: #801F33;
-      /* dark amaranth — primary accent */
-      --amaranth-deep: #5C1626;
-      --steel: #86A1BF;
-      /* steel blue */
-      --gold: #B3A100;
-      /* old gold */
-      --olive: #727D3D;
-      /* dust olive */
-      --line: rgba(43, 36, 28, .16);
-
-      --display: "Fraunces", Georgia, serif;
-      --body: "Hanken Grotesk", system-ui, sans-serif;
-      --mono: "Courier Prime", "Courier New", monospace;
-
-      --pad: clamp(1.25rem, 5vw, 6rem);
-      --maxw: 1180px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-    }
-
-    body {
-      font-family: var(--body);
-      color: var(--ink);
-      background: var(--paper);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    h1,
-    h2,
-    h3 {
-      font-family: var(--display);
-      font-weight: 400;
-      line-height: 1.03;
-      font-variation-settings: "SOFT" 30, "WONK" 0, "opsz" 144;
-      letter-spacing: -0.01em;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    /* analog film-slate label */
-    .label {
-      font-family: var(--mono);
-      font-size: 0.74rem;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--amaranth);
-    }
-
-    .eyebrow {
-      font-family: var(--display);
-      font-style: italic;
-      font-size: 1rem;
-      color: var(--amaranth);
-    }
-
-    .wrap {
-      max-width: var(--maxw);
-      margin-inline: auto;
-      padding-inline: var(--pad);
-    }
-
-    section {
-      padding-block: clamp(4rem, 10vw, 8.5rem);
-    }
-
-    :focus-visible {
-      outline: 2px solid var(--amaranth);
-      outline-offset: 3px;
-      border-radius: 2px;
-    }
-
-    /* ---------- NAV ---------- */
-    header.nav {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.85rem var(--pad);
-      background: color-mix(in srgb, var(--paper) 84%, transparent);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .monogram {
-      font-family: var(--display);
-      font-size: 1.35rem;
-      letter-spacing: 0.04em;
-      font-variation-settings: "SOFT" 50, "opsz" 40;
-    }
-
-    .monogram span {
-      color: var(--amaranth);
-      font-style: italic;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: clamp(1rem, 2.5vw, 2.2rem);
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      opacity: 0.8;
-      transition: opacity .2s;
-    }
-
-    .nav-links a:hover {
-      opacity: 1;
-    }
-
-    .nav-links a.nav-hide {
-      display: none;
-    }
-
-    @media (min-width: 760px) {
-      .nav-links a.nav-hide {
-        display: inline;
-      }
-    }
-
-    .nav-links a.nav-hide-lg {
-      display: none;
-    }
-
-    @media (min-width: 1040px) {
-      .nav-links a.nav-hide-lg {
-        display: inline;
-      }
-    }
-
-    .btn {
-      display: inline-block;
-      text-decoration: none;
-      font-family: var(--mono);
-      font-weight: 700;
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.75em 1.5em;
-      border-radius: 2px;
-      background: var(--amaranth);
-      color: var(--sand);
-      border: 1px solid var(--amaranth);
-      transition: transform .18s ease, background .2s ease;
-    }
-
-    .btn:hover {
-      background: var(--amaranth-deep);
-      transform: translateY(-2px);
-    }
-
-    .btn.ghost {
-      background: transparent;
-      color: var(--amaranth);
-    }
-
-    .btn.ghost:hover {
-      background: var(--amaranth);
-      color: var(--sand);
-    }
-
-    /* ---------- HERO ---------- */
-    .hero {
-      position: relative;
-      text-align: center;
-      padding-block: clamp(4rem, 13vw, 9rem);
-      overflow: hidden;
-    }
-
-    .hero .sky {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(55% 45% at 50% -8%, color-mix(in srgb, var(--gold) 26%, transparent), transparent 68%),
-        radial-gradient(46% 42% at 88% 12%, color-mix(in srgb, var(--steel) 30%, transparent), transparent 70%),
-        radial-gradient(42% 40% at 8% 30%, color-mix(in srgb, var(--amaranth) 12%, transparent), transparent 72%);
-    }
-
-    .hero .inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero .eyebrow {
-      display: inline-block;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero h1 {
-      font-size: clamp(3.4rem, 13vw, 9.5rem);
-      font-variation-settings: "SOFT" 40, "WONK" 1, "opsz" 144;
-    }
-
-    .hero h1 .amp {
-      display: block;
-      font-style: italic;
-      color: var(--amaranth);
-      font-size: 0.42em;
-      margin-block: 0.12em;
-      font-variation-settings: "SOFT" 70, "opsz" 40;
-    }
-
-    .hero .tagline {
-      max-width: 36ch;
-      margin: 1.8rem auto 2.4rem;
-      font-size: clamp(1.05rem, 2.4vw, 1.28rem);
-      color: color-mix(in srgb, var(--ink) 84%, transparent);
-    }
-
-    .hero .cta-row {
-      display: flex;
-      gap: 0.9rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    /* ---------- COUNTDOWN (film-slate) ---------- */
-    .countdown {
-      display: flex;
-      justify-content: center;
-      gap: clamp(1.2rem, 4vw, 3rem);
-      margin-top: 3.2rem;
-    }
-
-    .cd-unit {
-      text-align: center;
-      min-width: 3.5rem;
-    }
-
-    .cd-num {
-      font-family: var(--display);
-      font-size: clamp(2rem, 5.5vw, 3.4rem);
-      line-height: 1;
-      color: var(--amaranth);
-      font-variation-settings: "SOFT" 20, "opsz" 100;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .cd-label {
-      font-family: var(--mono);
-      font-size: 0.64rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      margin-top: 0.55rem;
-      opacity: 0.65;
-    }
-
-    .sprig {
-      display: block;
-      margin: 0 auto;
-      width: 88px;
-      height: auto;
-      color: var(--gold);
-    }
-
-    /* ---------- STORY ---------- */
-    .story .wrap {
-      display: grid;
-      gap: clamp(2rem, 5vw, 4.5rem);
-      grid-template-columns: 1fr;
-      align-items: center;
-    }
-
-    @media (min-width: 860px) {
-      .story .wrap {
-        grid-template-columns: 1.1fr 0.9fr;
-      }
-    }
-
-    .story h2 {
-      font-size: clamp(2.2rem, 6vw, 3.6rem);
-      margin: 0.8rem 0 1.3rem;
-    }
-
-    .story p {
-      max-width: 52ch;
-      margin-bottom: 1.1rem;
-      color: color-mix(in srgb, var(--ink) 90%, transparent);
-    }
-
-    .story .portrait {
-      aspect-ratio: 4 / 5;
-      overflow: hidden;
-      position: relative;
-      padding: 10px;
-      background: var(--sand);
-      border: 1px solid var(--line);
-      box-shadow: 0 16px 36px -24px rgba(43, 36, 28, .6);
-    }
-
-    .story .portrait .frame {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(150deg, var(--steel), var(--olive) 70%, var(--amaranth));
-    }
-
-    .story .portrait img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .story .portrait figcaption {
-      position: absolute;
-      left: 18px;
-      bottom: 18px;
-      z-index: 2;
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--sand);
-      letter-spacing: 0.06em;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, .5);
-    }
-
-    /* ---------- CELEBRATIONS ---------- */
-    .events {
-      background: var(--sand);
-    }
-
-    .events .head {
-      text-align: center;
-      margin-bottom: clamp(2.5rem, 6vw, 4rem);
-    }
-
-    .events h2 {
-      font-size: clamp(2.2rem, 6vw, 3.6rem);
-      margin-top: 0.6rem;
-    }
-
-    .event {
-      position: relative;
-      overflow: hidden;
-      background: var(--paper);
-      border: 1px solid var(--line);
-      display: grid;
-      grid-template-columns: 1fr;
-    }
-
-    @media (min-width: 820px) {
-      .event {
-        grid-template-columns: 1.3fr 1fr;
-      }
-    }
-
-    .event::before {
-      content: "";
-      position: absolute;
-      inset-inline: 0;
-      top: 0;
-      height: 4px;
-      z-index: 1;
-      background: linear-gradient(90deg, var(--amaranth), var(--gold));
-    }
-
-    .event-main {
-      padding: clamp(2rem, 4.5vw, 3.4rem);
-    }
-
-    .event .place {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--amaranth);
-    }
-
-    .event-date {
-      font-family: var(--display);
-      font-style: italic;
-      font-size: clamp(1.7rem, 4.5vw, 2.6rem);
-      color: var(--amaranth);
-      line-height: 1.05;
-      margin: 0.6rem 0 1.3rem;
-    }
-
-    .event-main p {
-      color: color-mix(in srgb, var(--ink) 88%, transparent);
-      max-width: 46ch;
-    }
-
-    .event-details {
-      padding: clamp(2rem, 4.5vw, 3.4rem);
-      background: var(--panel);
-      display: grid;
-      gap: 1.15rem;
-      align-content: center;
-    }
-
-    .event-details>div {
-      display: grid;
-      gap: 0.25rem;
-    }
-
-    .event-details dt {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      opacity: 0.6;
-    }
-
-    .event-details dd {
-      font-size: 1.02rem;
-    }
-
-    /* ---------- GALLERY (contact sheet) ---------- */
-    .gallery .head {
-      text-align: center;
-      margin-bottom: clamp(2.2rem, 5vw, 3.4rem);
-    }
-
-    .gallery h2 {
-      font-size: clamp(2.2rem, 6vw, 3.6rem);
-      margin-top: 0.5rem;
-    }
-
-    .grid {
-      display: grid;
-      gap: clamp(0.8rem, 2vw, 1.3rem);
-      grid-template-columns: repeat(2, 1fr);
-      grid-auto-flow: dense;
-    }
-
-    @media (min-width: 720px) {
-      .grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-
-    .grid figure {
-      position: relative;
-      margin: 0;
-      overflow: hidden;
-      aspect-ratio: 1 / 1;
-      padding: 8px 8px 26px;
-      background: var(--sand);
-      border: 1px solid var(--line);
-      box-shadow: 0 10px 24px -20px rgba(43, 36, 28, .7);
-    }
-
-    .grid figure .shot {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      position: relative;
-      background: linear-gradient(135deg, var(--steel), var(--olive));
-    }
-
-    .grid figure:nth-child(3n) .shot {
-      background: linear-gradient(135deg, var(--olive), #4f5a2c);
-    }
-
-    .grid figure:nth-child(4n) .shot {
-      background: linear-gradient(135deg, var(--amaranth), var(--gold));
-    }
-
-    .grid figure:nth-child(5n) .shot {
-      background: linear-gradient(135deg, var(--gold), var(--olive));
-    }
-
-    .grid figure.tall {
-      grid-row: span 2;
-      aspect-ratio: 1 / 2;
-    }
-
-    .grid figure.wide {
-      grid-column: span 2;
-      aspect-ratio: 2 / 1;
-    }
-
-    .grid img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform .5s ease;
-    }
-
-    .grid figure:hover img {
-      transform: scale(1.05);
-    }
-
-    .grid figcaption {
-      position: absolute;
-      left: 10px;
-      right: 10px;
-      bottom: 7px;
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.05em;
-      color: var(--ink);
-      display: flex;
-      justify-content: space-between;
-      gap: 0.5rem;
-    }
-
-    .grid figcaption .n {
-      color: var(--amaranth);
-    }
-
-    /* ---------- TRAVEL (amaranth feature) ---------- */
-    .stay {
-      background: var(--amaranth);
-      color: var(--sand);
-    }
-
-    .stay a {
-      color: var(--sand);
-      text-underline-offset: 3px;
-    }
-
-    .stay .label {
-      color: color-mix(in srgb, var(--gold) 80%, white);
-    }
-
-    .stay .eyebrow {
-      color: var(--sand);
-    }
-
-    .stay h2 {
-      font-size: clamp(2rem, 5.5vw, 3.2rem);
-      color: var(--sand);
-    }
-
-    .stay .cols {
-      display: grid;
-      gap: clamp(1.6rem, 4vw, 3rem);
-      grid-template-columns: 1fr;
-      margin-top: 2.4rem;
-    }
-
-    @media (min-width: 760px) {
-      .stay .cols {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    .stay h3 {
-      color: var(--sand);
-      font-family: var(--display);
-      font-size: 1.4rem;
-      margin-bottom: 0.7rem;
-    }
-
-    .stay p {
-      color: color-mix(in srgb, var(--sand) 82%, transparent);
-      margin-bottom: 0.9rem;
-      max-width: 46ch;
-    }
-
-    /* ---------- TRAVEL sub-blocks ---------- */
-    .stay .sub-head {
-      margin-top: clamp(2.8rem, 6vw, 4.2rem);
-    }
-
-    .stay .sub-title {
-      font-size: clamp(1.5rem, 3.6vw, 2.1rem);
-      margin-top: 0.45rem;
-    }
-
-    .hoods {
-      display: grid;
-      gap: clamp(0.9rem, 2vw, 1.2rem);
-      grid-template-columns: 1fr;
-      margin-top: 1.6rem;
-    }
-
-    @media (min-width: 700px) {
-      .hoods {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (min-width: 1000px) {
-      .hoods {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    .hood {
-      padding: 1.35rem 1.45rem;
-      border: 1px solid color-mix(in srgb, var(--sand) 32%, transparent);
-      background: color-mix(in srgb, var(--amaranth-deep) 55%, transparent);
-    }
-
-    .hood .tag {
-      display: block;
-      font-family: var(--mono);
-      font-size: 0.64rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: color-mix(in srgb, var(--gold) 75%, white);
-      margin-bottom: 0.5rem;
-    }
-
-    .hood h4 {
-      font-family: var(--display);
-      font-weight: 400;
-      font-size: 1.2rem;
-      line-height: 1.1;
-      color: var(--sand);
-      margin-bottom: 0.45rem;
-    }
-
-    .hood p {
-      margin: 0;
-      max-width: none;
-      font-size: 0.95rem;
-    }
-
-    /* ---------- KNOW BEFORE YOU GO ---------- */
-    .know {
-      background: var(--sand);
-    }
-
-    .know .head {
-      text-align: center;
-      margin-bottom: clamp(2rem, 5vw, 3rem);
-    }
-
-    .know h2 {
-      font-size: clamp(2.2rem, 6vw, 3.4rem);
-      margin-top: 0.5rem;
-    }
-
-    .info-grid {
-      display: grid;
-      gap: clamp(1rem, 2.5vw, 1.6rem);
-      grid-template-columns: 1fr;
-    }
-
-    @media (min-width: 760px) {
-      .info-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    .info {
-      position: relative;
-      background: var(--paper);
-      border: 1px solid var(--line);
-      padding: clamp(1.5rem, 3vw, 2.1rem);
-    }
-
-    .info::before {
-      content: "";
-      position: absolute;
-      inset-inline: 0;
-      top: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--amaranth), var(--gold));
-    }
-
-    .info h3 {
-      font-size: 1.35rem;
-      margin-bottom: 0.7rem;
-    }
-
-    .info p {
-      color: color-mix(in srgb, var(--ink) 88%, transparent);
-      margin-bottom: 0.7rem;
-    }
-
-    .info p:last-child {
-      margin-bottom: 0;
-    }
-
-    .info ul {
-      margin: 0 0 0.8rem 1.15rem;
-      color: color-mix(in srgb, var(--ink) 88%, transparent);
-    }
-
-    .info li {
-      margin-bottom: 0.28rem;
-    }
-
-    /* ---------- THINGS TO DO ---------- */
-    .todo .head {
-      text-align: center;
-      margin-bottom: clamp(2rem, 5vw, 3rem);
-    }
-
-    .todo h2 {
-      font-size: clamp(2.2rem, 6vw, 3.6rem);
-      margin-top: 0.5rem;
-    }
-
-    .todo-grid {
-      display: grid;
-      gap: clamp(1rem, 2.5vw, 1.5rem);
-      grid-template-columns: 1fr;
-    }
-
-    @media (min-width: 720px) {
-      .todo-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (min-width: 1040px) {
-      .todo-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    .spot {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      background: var(--sand);
-      border: 1px solid var(--line);
-      padding: 1.5rem 1.5rem 1.6rem;
-    }
-
-    .spot .n {
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.18em;
-      color: var(--amaranth);
-    }
-
-    .spot h3 {
-      font-size: 1.32rem;
-    }
-
-    .spot p {
-      font-size: 0.97rem;
-      color: color-mix(in srgb, var(--ink) 88%, transparent);
-    }
-
-    .spot address {
-      font-family: var(--mono);
-      font-style: normal;
-      font-size: 0.72rem;
-      line-height: 1.55;
-      opacity: 0.6;
-      margin-top: auto;
-      padding-top: 0.7rem;
-    }
-
-    /* ---------- REGISTRY ---------- */
-    .registry {
-      background: var(--panel);
-      text-align: center;
-    }
-
-    .registry h2 {
-      font-size: clamp(2rem, 5.5vw, 3rem);
-      margin: 0.6rem 0 1rem;
-    }
-
-    .registry p {
-      max-width: 46ch;
-      margin: 0 auto;
-      font-size: 1.05rem;
-      color: color-mix(in srgb, var(--ink) 88%, transparent);
-    }
-
-    /* ---------- FAQ ---------- */
-    .faq h2 {
-      font-size: clamp(2rem, 5.5vw, 3.2rem);
-      text-align: center;
-      margin-bottom: clamp(2rem, 5vw, 3rem);
-    }
-
-    details {
-      border-top: 1px solid var(--line);
-      padding: 1.2rem 0;
-      max-width: 760px;
-      margin-inline: auto;
-    }
-
-    details:last-of-type {
-      border-bottom: 1px solid var(--line);
-    }
-
-    summary {
-      cursor: pointer;
-      list-style: none;
-      font-family: var(--display);
-      font-size: 1.25rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    summary::-webkit-details-marker {
-      display: none;
-    }
-
-    summary::after {
-      content: "+";
-      color: var(--amaranth);
-      font-size: 1.5rem;
-      transition: transform .2s;
-    }
-
-    details[open] summary::after {
-      transform: rotate(45deg);
-    }
-
-    details p {
-      margin-top: 0.9rem;
-      max-width: 62ch;
-      color: color-mix(in srgb, var(--ink) 86%, transparent);
-    }
-
-    /* ---------- RSVP ---------- */
-    .rsvp {
-      text-align: center;
-      background: linear-gradient(160deg, var(--sand), var(--paper));
-    }
-
-    .rsvp h2 {
-      font-size: clamp(2.6rem, 8vw, 5rem);
-      margin-bottom: 1rem;
-    }
-
-    .rsvp p {
-      max-width: 40ch;
-      margin: 0 auto 2rem;
-      font-size: 1.1rem;
-    }
-
-    .rsvp .btn {
-      font-size: 0.9rem;
-      padding: 0.95em 2.2em;
-    }
-
-    /* ---------- FOOTER ---------- */
-    footer.foot {
-      text-align: center;
-      padding: clamp(3rem, 7vw, 5rem) var(--pad);
-      border-top: 1px solid var(--line);
-    }
-
-    footer.foot .monogram {
-      font-size: 2rem;
-    }
-
-    footer.foot p {
-      font-family: var(--mono);
-      font-size: 0.76rem;
-      letter-spacing: 0.06em;
-      opacity: 0.6;
-      margin-top: 0.8rem;
-    }
-
-    /* ---------- SCROLL REVEAL ---------- */
-    .reveal {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity .7s ease, transform .7s ease;
-    }
-
-    .reveal.in {
-      opacity: 1;
-      transform: none;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .reveal {
-        opacity: 1;
-        transform: none;
-        transition: none;
-      }
-
-      .card,
-      .grid img {
-        transition: none;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -962,15 +48,28 @@
     </nav>
   </header>
 
+  <!-- ================= HERO BANNER ================= -->
+  <!--
+    ✎ HERO PHOTO — save the Japan shot as images/hero.jpg (landscape, ~2400px
+    wide, WebP or AVIF if you can). For sharper phones + lighter desktops:
+      <img src="images/hero-1600.jpg"
+           srcset="images/hero-1200.jpg 1200w, images/hero-2000.jpg 2000w, images/hero-2800.jpg 2800w"
+           sizes="100vw" …>
+    If the file is missing the band degrades to a gradient, so nothing breaks.
+  -->
+  <figure class="hero-banner" id="top">
+    <img src="images/1O6A3965.jpg" alt="The two of us in Japan" width="2400" height="1029" fetchpriority="high"
+      decoding="async" onerror="this.style.display='none'" />
+    <!-- <figcaption><span>Japan</span><span class="n">&#9679;</span></figcaption> -->
+  </figure>
+
   <!-- ================= HERO ================= -->
-  <section class="hero" id="top">
+  <section class="hero">
     <div class="sky"></div>
     <div class="inner wrap">
       <span class="eyebrow reveal">We're getting married!</span>
       <!-- ✎ Your names -->
       <h1 class="reveal">Victor <span class="amp">&amp;</span> Konto</h1>
-      <p class="tagline reveal">One weekend in Mexico City, next spring — a trumpet, a full dance floor, and all our
-        favorite people in one room.</p>
       <div class="cta-row reveal">
         <a href="#rsvp" class="btn">RSVP</a>
         <a href="#events" class="btn ghost">The details</a>
@@ -1012,25 +111,7 @@
 
   <!-- ================= STORY ================= -->
   <section class="story" id="story">
-    <div class="wrap">
-      <div class="reveal">
-        <span class="label">Our story</span>
-        <h2>How we got here</h2>
-        <!-- ✎ Replace with your own words -->
-        <p>Some love stories are a slow build and some are a lightning strike. Ours was a bit of both — a first
-          conversation that ran far too long, and every one since that we haven't wanted to end.</p>
-        <p>A few years, a couple of cities, and one very good decision later, we're doing the thing — in Mexico City, in
-          spring. We'd love for you to be there when we do.</p>
-      </div>
-      <figure class="portrait reveal">
-        <div class="frame">
-          <!-- ✎ Drop a photo at images/portrait.jpg (portrait, ~4:5) -->
-          <img src="images/portrait.jpg" alt="Victor and Partner" loading="lazy" width="800" height="1000"
-            onerror="this.style.display='none'" />
-        </div>
-        <figcaption>&#9679; somewhere we love</figcaption>
-      </figure>
-    </div>
+    <div class="wrap"></div>
   </section>
 
   <!-- ================= CELEBRATIONS ================= -->
@@ -1045,8 +126,9 @@
         <div class="event-main">
           <div class="place">Mexico City · México</div>
           <div class="event-date">Saturday,<br>20 March 2027</div>
-          <p>A weekend in CDMX with a trumpet, a good bar, and marigolds everywhere. We'll gather in the late afternoon
-            and celebrate well past dark — come hungry, stay late, dance badly.</p>
+          <p>A weekend in CDMX
+            We'll gather in the late afternoon and celebrate well past dark
+            come hungry, stay late, dance badly.</p>
           <p style="margin-top:1rem"><strong>And make sure to stay hydrated!</strong></p>
         </div>
         <dl class="event-details">
@@ -1062,7 +144,7 @@
           <div>
             <dt>Dress</dt>
             <dd>Cocktail attire</dd>
-            <dd style="font-size:.92rem;opacity:.8">Cocktail dresses, LBDs, dressy jumpsuits, dark jackets and slacks.
+            <dd style="font-size:.92rem;opacity:.8">Cocktail dresses, LBDs, dressy jumpsuits, fun jackets and slacks.
             </dd>
           </div>
         </dl>
@@ -1074,7 +156,7 @@
   <section class="gallery" id="gallery">
     <div class="wrap">
       <div class="head reveal">
-        <span class="label">Contact sheet</span>
+        <span class="label"></span>
         <h2>Us, lately</h2>
       </div>
       <!--
@@ -1125,30 +207,30 @@
   <!-- ================= TRAVEL & STAY ================= -->
   <section class="stay" id="travel">
     <div class="wrap">
-      <span class="label">Travel &amp; stay</span>
       <h2>Getting there</h2>
+      <span class="label">Travel</span>
       <div class="cols">
         <div class="reveal">
           <h3>Flights</h3>
-          <p>Most guests will fly into Benito Juárez International Airport (MEX / AICM), which has direct flights from
+          <p>Guests should fly into Benito Juárez International Airport (MEX / AICM), which has direct flights from
             most major U.S. cities. March is beautiful here and the city fills up fast, so book early.</p>
           <p>To get to your hotel, take an authorized airport taxi from an official kiosk, or step outside for an Uber
             pickup. Skip the drivers who approach you inside the terminal.</p>
         </div>
         <div class="reveal">
-          <h3>Passport &amp; visa</h3>
+          <h3>Passport &amp; Visa</h3>
           <p>You'll need a valid passport <em>book</em> to fly into Mexico — a passport card or REAL ID isn't enough for
             air travel. No visa is required for tourist stays under 180 days.</p>
-          <p>When you land you'll get a tourist entry permit (an FMM), usually issued digitally at the airport. Hang on
-            to any paperwork or QR code you receive, since you may need to show it when you leave.</p>
-          <p>If you're not a U.S. citizen, requirements vary by country — please check your own country's entry rules
+          <p>When you land you'll get a tourist entry permit at the airport. <b>Hang on
+              to any paperwork or QR code you receive, since you may need to show it when you leave.</b></p>
+          <p>If you're not a U.S. citizen, requirements vary by country. Please check your own country's entry rules
             well ahead of time.</p>
         </div>
       </div>
 
       <div class="sub-head reveal">
-        <span class="label">Where to stay</span>
-        <h3 class="sub-title">Neighborhoods we'd point you to</h3>
+        <h2>Where to stay</h2>
+        <span class="label">Neighborhoods we'd point you to</span>
       </div>
       <div class="hoods reveal">
         <article class="hood">
@@ -1176,21 +258,77 @@
           <p>Polished and upscale, home to Michelin-level restaurants, museums, and high-end shopping — a great pick if
             you want a quieter, more luxurious base.</p>
         </article>
-        <article class="hood">
-          <span class="tag">Closest to us</span>
-          <h4>Centro Histórico</h4>
-          <p>The neighborhood the venue is actually in. Packed with history, museums, and the Zócalo — ideal if you want
-            to walk to the celebration.</p>
+      </div>
+
+
+
+      <div class="sub-head reveal">
+        <h2>Things to do</h2>
+        <span class="label">Have fun</span>
+      </div>
+
+      <div class="todo-grid reveal">
+        <article class="spot">
+          <span class="n">01</span>
+          <h3>Frida Kahlo Museum</h3>
+          <p>Frida's vivid blue childhood home in Coyoacán, filled with her art and personal belongings.</p>
+          <address>247 Londres, Ciudad de México,<br>CDMX 04100, Mexico</address>
+        </article>
+        <article class="spot">
+          <span class="n">02</span>
+          <h3>Trajineras, Xochimilco</h3>
+          <p>Hop on a colorful floating boat through the ancient canals, complete with mariachis and floating snack
+            vendors.</p>
+          <address>70 1a. Cerrada de Embarcadero,<br>Ciudad de México, CDMX 16080, Mexico</address>
+        </article>
+        <article class="spot">
+          <span class="n">03</span>
+          <h3>Museo Nacional de Antropología</h3>
+          <p>A world-class museum of Mexico's ancient civilizations, including the massive Aztec Sun Stone.</p>
+          <address>s/n Avenida Paseo de la Reforma,<br>Ciudad de México, CDMX 11560, Mexico</address>
+        </article>
+        <article class="spot">
+          <span class="n">04</span>
+          <h3>Palacio Postal</h3>
+          <p>A stunning gilded, Beaux-Arts former post office in Centro Histórico — as much an architectural marvel as
+            a
+            museum.</p>
+          <address>1 Calle de Tacuba, Ciudad de México,<br>CDMX 06000, Mexico</address>
+        </article>
+        <article class="spot">
+          <span class="n">05</span>
+          <h3>Teotihuacán Pyramids</h3>
+          <p>Climb the Pyramid of the Sun just outside the city, one of the most impressive ancient sites in the
+            Americas.</p>
+          <address>Teotihuacán de Arista,<br>Méx. 55800, Mexico</address>
         </article>
       </div>
+
+      <div class="sub-head reveal">
+        <h2>Places to Eat and Drink</h2>
+        <span class="label">Recommended but not required</span>
+      </div>
+      <div class="hoods reveal">
+        <article class="hood"></article>
+        <article class="hood"></article>
+        <article class="hood"></article>
+        <article class="hood"></article>
+        <article class="hood"></article>
+        <article class="hood"></article>
+      </div>
+
+
     </div>
+
   </section>
+
+  <!-- TODO: Add sigil -->
 
   <!-- ================= KNOW BEFORE YOU GO ================= -->
   <section class="know" id="know">
     <div class="wrap">
       <div class="head reveal">
-        <span class="label">Before you fly</span>
+        <!-- <span class="label">Before you fly</span> -->
         <h2>Good to know</h2>
       </div>
       <div class="info-grid reveal">
@@ -1229,50 +367,7 @@
     </div>
   </section>
 
-  <!-- ================= THINGS TO DO ================= -->
-  <section class="todo" id="todo">
-    <div class="wrap">
-      <div class="head reveal">
-        <span class="label">While you're here</span>
-        <h2>Things to do</h2>
-      </div>
-      <div class="todo-grid reveal">
-        <article class="spot">
-          <span class="n">01</span>
-          <h3>Frida Kahlo Museum</h3>
-          <p>Frida's vivid blue childhood home in Coyoacán, filled with her art and personal belongings.</p>
-          <address>247 Londres, Ciudad de México,<br>CDMX 04100, Mexico</address>
-        </article>
-        <article class="spot">
-          <span class="n">02</span>
-          <h3>Trajineras, Xochimilco</h3>
-          <p>Hop on a colorful floating boat through the ancient canals, complete with mariachis and floating snack
-            vendors.</p>
-          <address>70 1a. Cerrada de Embarcadero,<br>Ciudad de México, CDMX 16080, Mexico</address>
-        </article>
-        <article class="spot">
-          <span class="n">03</span>
-          <h3>Museo Nacional de Antropología</h3>
-          <p>A world-class museum of Mexico's ancient civilizations, including the massive Aztec Sun Stone.</p>
-          <address>s/n Avenida Paseo de la Reforma,<br>Ciudad de México, CDMX 11560, Mexico</address>
-        </article>
-        <article class="spot">
-          <span class="n">04</span>
-          <h3>Palacio Postal</h3>
-          <p>A stunning gilded, Beaux-Arts former post office in Centro Histórico — as much an architectural marvel as a
-            museum.</p>
-          <address>1 Calle de Tacuba, Ciudad de México,<br>CDMX 06000, Mexico</address>
-        </article>
-        <article class="spot">
-          <span class="n">05</span>
-          <h3>Teotihuacán Pyramids</h3>
-          <p>Climb the Pyramid of the Sun just outside the city, one of the most impressive ancient sites in the
-            Americas.</p>
-          <address>Teotihuacán de Arista,<br>Méx. 55800, Mexico</address>
-        </article>
-      </div>
-    </div>
-  </section>
+
 
   <!-- ================= REGISTRY ================= -->
   <section class="registry" id="registry">
@@ -1337,7 +432,7 @@
   <footer class="foot">
     <div class="monogram">V <span style="color:var(--amaranth);font-style:italic">&amp;</span> K</div>
     <!-- ✎ Names + date -->
-    <p>VICTOR &amp; PARTNER — 2027 · MADE WITH LOVE (AND A LITTLE CSS)</p>
+    <p>2027 </p>
   </footer>
 
   <script>
