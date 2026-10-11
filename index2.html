@@ -23,10 +23,14 @@
      Dust Olive #727D3D · Pale Sand #E8E6C7
 -->
 
+  <!-- Flags that JS is running, so scroll-reveal only hides content when it can un-hide it -->
+  <script>document.documentElement.classList.add('js');</script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Fraunces now requests the SOFT + WONK axes the stylesheet uses -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Hanken+Grotesk:wght@400;500;600&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..600,0..100,0..1;1,9..144,300..500,0..100,0..1&amp;family=Hanken+Grotesk:wght@400;500;600&amp;family=Courier+Prime:ital,wght@0,400;0,700;1,400&amp;display=swap"
     rel="stylesheet" />
 
   <link rel="stylesheet" href="style.css">
@@ -38,10 +42,11 @@
     <!-- ✎ Monogram: your initials -->
     <a href="#top" class="monogram" style="text-decoration:none">V <span>&amp;</span> K</a>
     <nav class="nav-links">
-      <a href="#story" class="nav-hide">Story</a>
       <a href="#events" class="nav-hide">Details</a>
       <a href="#travel" class="nav-hide">Travel</a>
+      <a href="#stay" class="nav-hide">Stay</a>
       <a href="#todo" class="nav-hide nav-hide-lg">Things to do</a>
+      <a href="#food" class="nav-hide nav-hide-lg">Food</a>
       <a href="#registry" class="nav-hide nav-hide-lg">Registry</a>
       <a href="#faq" class="nav-hide nav-hide-lg">FAQ</a>
       <a href="#rsvp" class="btn">RSVP</a>
@@ -50,8 +55,8 @@
 
   <!-- ================= HERO BANNER ================= -->
   <!--
-    ✎ HERO PHOTO — save the Japan shot as images/hero.jpg (landscape, ~2400px
-    wide, WebP or AVIF if you can). For sharper phones + lighter desktops:
+    ✎ HERO PHOTO — landscape, ~2400px wide, WebP or AVIF if you can.
+    For sharper phones + lighter desktops:
       <img src="images/hero-1600.jpg"
            srcset="images/hero-1200.jpg 1200w, images/hero-2000.jpg 2000w, images/hero-2800.jpg 2800w"
            sizes="100vw" …>
@@ -67,7 +72,7 @@
   <section class="hero">
     <div class="sky"></div>
     <div class="inner wrap">
-      <span class="eyebrow reveal">We're getting married!</span>
+      <span class="eyebrow reveal">We're married! Now lets celebrate.</span>
       <!-- ✎ Your names -->
       <h1 class="reveal">Victor <span class="amp">&amp;</span> Konto</h1>
       <div class="cta-row reveal">
@@ -75,7 +80,7 @@
         <a href="#events" class="btn ghost">The details</a>
       </div>
 
-      <div class="countdown reveal" id="countdown" aria-label="Countdown to the Mexico City celebration">
+      <div class="countdown reveal" id="countdown" role="timer" aria-label="Countdown to the Mexico City celebration">
         <div class="cd-unit">
           <div class="cd-num" data-days>—</div>
           <div class="cd-label">Days</div>
@@ -110,6 +115,7 @@
     </svg></div>
 
   <!-- ================= STORY ================= -->
+  <!-- ✎ Empty for now — the nav "Story" link lands here -->
   <section class="story" id="story">
     <div class="wrap"></div>
   </section>
@@ -126,8 +132,7 @@
         <div class="event-main">
           <div class="place">Mexico City · México</div>
           <div class="event-date">Saturday,<br>20 March 2027</div>
-          <p>A weekend in CDMX
-            We'll gather in the late afternoon and celebrate well past dark
+          <p>A weekend in CDMX. We'll gather in the late afternoon and celebrate well past dark —
             come hungry, stay late, dance badly.</p>
           <p style="margin-top:1rem"><strong>And make sure to stay hydrated!</strong></p>
         </div>
@@ -171,34 +176,51 @@
     -->
       <div class="grid reveal">
         <figure class="tall">
-          <div class="shot"><img src="images/gallery-01.jpg" alt="" loading="lazy" width="800" height="1600"
+          <div class="shot"><img src="images/gallery-01.jpg" alt="Dressed up on a rooftop above the Seattle waterfront"
+              loading="lazy" width="800" height="1200" style="object-position:40% center"
               onerror="this.style.display='none'"></div>
-          <figcaption><span>the proposal</span><span class="n">01</span></figcaption>
+          <figcaption><span>mr. &amp; mrs.</span><span class="n">01</span></figcaption>
         </figure>
         <figure>
-          <div class="shot"><img src="images/gallery-02.jpg" alt="" loading="lazy" width="800" height="800"
+          <div class="shot"><img src="images/gallery-02.jpg" alt="Our first selfie together on a grey beach"
+              loading="lazy" width="1200" height="900" style="object-position:25% center"
               onerror="this.style.display='none'"></div>
-          <figcaption><span>sunday mornings</span><span class="n">02</span></figcaption>
+          <figcaption><span>our first selfie</span><span class="n">02</span></figcaption>
         </figure>
         <figure>
-          <div class="shot"><img src="images/gallery-03.jpg" alt="" loading="lazy" width="800" height="800"
+          <div class="shot"><img src="images/gallery-03.jpg" alt="Konto showing off her engagement ring" loading="lazy"
+              width="900" height="1200" style="object-position:center 30%" onerror="this.style.display='none'"></div>
+          <figcaption><span>she said yes</span><span class="n">03</span></figcaption>
+        </figure>
+        <figure class="tall">
+          <div class="shot"><img src="images/gallery-11.jpg" alt="Holding hands next to a red vending machine in Tokyo"
+              loading="lazy" width="683" height="1024" style="object-position:55% center"
               onerror="this.style.display='none'"></div>
-          <figcaption><span>on the road</span><span class="n">03</span></figcaption>
+          <figcaption><span>jimbocho, tokyo</span><span class="n">04</span></figcaption>
         </figure>
         <figure class="wide">
-          <div class="shot"><img src="images/gallery-04.jpg" alt="" loading="lazy" width="1600" height="800"
+          <div class="shot"><img src="images/gallery-05.jpg" alt="Holding hands from two wooden chairs in a green park"
+              loading="lazy" width="1600" height="1067" style="object-position:center 70%"
               onerror="this.style.display='none'"></div>
-          <figcaption><span>cdmx, last spring</span><span class="n">04</span></figcaption>
+          <figcaption><span>separate chairs, same team</span><span class="n">05</span></figcaption>
         </figure>
         <figure>
-          <div class="shot"><img src="images/gallery-05.jpg" alt="" loading="lazy" width="800" height="800"
+          <div class="shot"><img src="images/gallery-06.jpg" alt="Selfie in a round street mirror in Japan"
+              loading="lazy" width="900" height="1200" style="object-position:center 20%"
               onerror="this.style.display='none'"></div>
-          <figcaption><span>golden hour</span><span class="n">05</span></figcaption>
+          <figcaption><span>mirror, mirror</span><span class="n">06</span></figcaption>
         </figure>
         <figure>
-          <div class="shot"><img src="images/gallery-06.jpg" alt="" loading="lazy" width="800" height="800"
+          <div class="shot"><img src="images/gallery-12.jpg"
+              alt="Anniversary dinner with a candle in a slice of crepe cake" loading="lazy" width="1200" height="900"
               onerror="this.style.display='none'"></div>
-          <figcaption><span>just because</span><span class="n">06</span></figcaption>
+          <figcaption><span>we wanted free cake</span><span class="n">07</span></figcaption>
+        </figure>
+        <figure class="wide">
+          <div class="shot"><img src="images/gallery-10.jpg" alt="Mirror selfie in a room of glowing lights"
+              loading="lazy" width="1600" height="1067" style="object-position:center 15%"
+              onerror="this.style.display='none'"></div>
+          <figcaption><span>mirror, mirror, mirror</span><span class="n">08</span></figcaption>
         </figure>
       </div>
     </div>
@@ -212,7 +234,7 @@
       <div class="cols">
         <div class="reveal">
           <h3>Flights</h3>
-          <p>Guests should fly into Benito Juárez International Airport (MEX / AICM), which has direct flights from
+          <p>Guests should fly into <b>Benito Juárez International Airport (MEX)</b>, which has direct flights from
             most major U.S. cities. March is beautiful here and the city fills up fast, so book early.</p>
           <p>To get to your hotel, take an authorized airport taxi from an official kiosk, or step outside for an Uber
             pickup. Skip the drivers who approach you inside the terminal.</p>
@@ -228,41 +250,39 @@
         </div>
       </div>
 
-      <div class="sub-head reveal">
+      <div class="sub-head reveal" id="stay">
         <h2>Where to stay</h2>
         <span class="label">Neighborhoods we'd point you to</span>
       </div>
       <div class="hoods reveal">
         <article class="hood">
           <span class="tag">Walkable · food</span>
-          <h4>Roma Norte</h4>
+          <h3>Roma Norte</h3>
           <p>Tree-lined streets, gorgeous Art Nouveau buildings, and some of the city's best restaurants and coffee
             shops — all very walkable.</p>
         </article>
         <article class="hood">
           <span class="tag">Leafy · lively</span>
-          <h4>Condesa</h4>
+          <h3>Condesa</h3>
           <p>Laid-back and green with a park at its center, popular with a younger crowd for its cafés, bars, and Art
             Deco architecture.</p>
         </article>
         <article class="hood">
           <span class="tag">Cobblestones · Frida</span>
-          <h4>Coyoacán</h4>
+          <h3>Coyoacán</h3>
           <p>A colorful, small-town feel in the middle of the city: cobblestone plazas, Frida Kahlo's Casa Azul, and
             lively weekend markets. A bit farther from Centro Histórico, but worth a day trip even if you don't stay
             there.</p>
         </article>
         <article class="hood">
           <span class="tag">Upscale · quiet</span>
-          <h4>Polanco</h4>
+          <h3>Polanco</h3>
           <p>Polished and upscale, home to Michelin-level restaurants, museums, and high-end shopping — a great pick if
             you want a quieter, more luxurious base.</p>
         </article>
       </div>
 
-
-
-      <div class="sub-head reveal">
+      <div class="sub-head reveal" id="todo">
         <h2>Things to do</h2>
         <span class="label">Have fun</span>
       </div>
@@ -291,8 +311,7 @@
           <span class="n">04</span>
           <h3>Palacio Postal</h3>
           <p>A stunning gilded, Beaux-Arts former post office in Centro Histórico — as much an architectural marvel as
-            a
-            museum.</p>
+            a museum.</p>
           <address>1 Calle de Tacuba, Ciudad de México,<br>CDMX 06000, Mexico</address>
         </article>
         <article class="spot">
@@ -304,25 +323,166 @@
         </article>
       </div>
 
-      <div class="sub-head reveal">
+      <div class="sub-head reveal" id="food">
         <h2>Places to Eat and Drink</h2>
         <span class="label">Recommended but not required</span>
       </div>
+      <!-- ✎ Placeholder cards — fill in (tag / h3 / p, same as the neighborhoods) -->
       <div class="hoods reveal">
-        <article class="hood"></article>
-        <article class="hood"></article>
-        <article class="hood"></article>
-        <article class="hood"></article>
-        <article class="hood"></article>
-        <article class="hood"></article>
+        <article class="hood eat">
+          <span class="tag">Tacos · handmade tortillas</span>
+          <h3><a href="https://www.google.com/maps/search/?api=1&amp;query=Trinidad+Ritual+de+Sabores+Ciudad+de+Mexico"
+              target="_blank" rel="noopener">Trinidad Ritual de Sabores</a></h3>
+          <dl class="eat-notes">
+            <div>
+              <dt>Order</dt>
+              <dd>The taco de pulpo and the marzipan horchata.</dd>
+            </div>
+            <div>
+              <dt>Why</dt>
+              <dd>Really good food and you get to explore the market.</dd>
+            </div>
+          </dl>
+          <address class="where">Ignacio Allende s/n, Del Carmen, Coyoac&aacute;n</address>
+        </article>
+
+        <article class="hood eat">
+          <span class="tag">Bakery · bistro</span>
+          <h3><a href="https://www.instagram.com/elolvidado__/" target="_blank" rel="noopener">Panader&iacute;a El
+              Olvidado</a>
+          </h3>
+          <dl class="eat-notes">
+            <div>
+              <dt>Order</dt>
+              <dd>Any of their baked goods, especially the conchas.</dd>
+            </div>
+            <div>
+              <dt>Why</dt>
+              <dd>A really good bakery right in front of El Jarocho coffee. The building is pink!</dd>
+            </div>
+          </dl>
+          <address class="where">Av. México 36, Del Carmen, Coyoacán</address>
+        </article>
+
+        <article class="hood eat">
+          <span class="tag">Omakase · splurge 🤑</span>
+          <h3><a href="https://itsemilia.rest/en" target="_blank" rel="noopener">Em</a></h3>
+          <dl class="eat-notes">
+            <div>
+              <dt>Order</dt>
+              <dd>Whatever the chef gives you. It's omakase.</dd>
+            </div>
+            <div>
+              <dt>Why</dt>
+              <dd>Fine dining with an Asian-inspired twist.</dd>
+            </div>
+          </dl>
+          <address class="where">Tonalá 133, Roma Nte., Cuauhtémoc</address>
+        </article>
+
+        <article class="hood eat">
+          <span class="tag">Seafood · Ensenada-style</span>
+          <h3><a href="https://guide.michelin.com/us/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/campobaja"
+              target="_blank" rel="noopener">Campobaja</a></h3>
+          <dl class="eat-notes">
+            <div>
+              <dt>Order</dt>
+              <dd>The tostada de atún and the chicharrón (it's not pork).</dd>
+            </div>
+            <div>
+              <dt>Why</dt>
+              <dd>A low-key alternative to its sister restaurant, Contramar: fresh Baja seafood, tostadas, and burritos.
+              </dd>
+            </div>
+          </dl>
+          <address class="where">C.Colima 124-E, Roma Nte., Cuauht&eacute;moc</address>
+        </article>
+
+        <article class="hood eat">
+          <span class="tag">Street tacos · late night</span>
+          <h3><a href="https://www.google.com/maps/search/?api=1&amp;query=Tacos+El+Periferico+Ciudad+de+Mexico"
+              target="_blank" rel="noopener">Tacos El Periférico</a></h3>
+          <dl class="eat-notes">
+            <div>
+              <dt>Order</dt>
+              <dd>Suadero, which is what they're famous for. Then lengua and cabeza.</dd>
+            </div>
+            <div>
+              <dt>Why</dt>
+              <dd>You should try street tacos...at least once.</dd>
+            </div>
+          </dl>
+          <address class="where">Multiple locations</address>
+        </article>
+
+        <article class="hood eat">
+          <span class="tag">Speakeasy · Condesa</span>
+          <h3><a href="https://www.instagram.com/owlbar_mx/" target="_blank" rel="noopener">Owl Hidden Bar</a></h3>
+          <dl class="eat-notes">
+            <div>
+              <dt>Order</dt>
+              <dd>Any of the drinks. They were all really good.</dd>
+            </div>
+            <div>
+              <dt>Why</dt>
+              <dd>Super chill vibes. Look for the man sitting in front of the door; he's how you get in.</dd>
+            </div>
+          </dl>
+          <address class="where">Atlixco 94, Condesa<br>Tue–Sat, 7 p.m.–2 a.m. · reservation only<br><a
+              href="https://wa.me/525538813337" target="_blank" rel="noopener">Reserve on WhatsApp</a></address>
+        </article>
+
+        <article class="hood eat">
+          <span class="tag">Rooftop · brunch</span>
+          <h3><a href="https://www.sofitel-mexico-city.com/restaurants/cityzen-rooftop/" target="_blank"
+              rel="noopener">Cityzen Rooftop</a></h3>
+          <dl class="eat-notes">
+            <div>
+              <dt>Order</dt>
+              <dd>The guava pastries and the chilaquiles.</dd>
+            </div>
+            <div>
+              <dt>Why</dt>
+              <dd>Amazing views of the city (smog permitting).</dd>
+            </div>
+          </dl>
+          <address class="where">Top of the Sofitel, Reforma</address>
+        </article>
+
+        <article class="hood eat">
+          <span class="tag">Coffee</span>
+          <h3><a href="https://www.google.com/maps/search/?api=1&amp;query=Cafe+Passmar+Ciudad+de+Mexico"
+              target="_blank" rel="noopener">Passmar</a></h3>
+          <dl class="eat-notes">
+            <div>
+              <dt>Order</dt>
+              <dd>The custard espresso.</dd>
+            </div>
+            <div>
+              <dt>Why</dt>
+              <dd>There's nothing like it.</dd>
+            </div>
+          </dl>
+          <address class="where">Multiple locations</address>
+        </article>
       </div>
 
-
     </div>
-
   </section>
 
-  <!-- TODO: Add sigil -->
+  <!-- Section divider (same sprig as after the countdown) -->
+  <div class="wrap sprig-band"><svg class="sprig" viewBox="0 0 120 64" fill="none" xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true">
+      <path d="M60 62 C60 46 55 40 46 36 M60 50 C60 40 66 34 76 32 M60 42 C60 34 55 30 48 27 M60 34 C60 27 66 23 73 21"
+        stroke="currentColor" stroke-width="1.3" stroke-linecap="round" />
+      <g fill="currentColor">
+        <path d="M46 36c-4-3-9-2-10 2 4 3 9 2 10-2z" />
+        <path d="M76 32c4-3 9-2 10 2-4 3-9 2-10-2z" />
+        <path d="M48 27c-3-3-8-3-10 1 3 3 8 3 10-1z" />
+        <path d="M73 21c3-3 8-3 10 1-3 3-8 3-10-1z" />
+        <circle cx="60" cy="18" r="4.2" />
+      </g>
+    </svg></div>
 
   <!-- ================= KNOW BEFORE YOU GO ================= -->
   <section class="know" id="know">
@@ -366,8 +526,6 @@
       </div>
     </div>
   </section>
-
-
 
   <!-- ================= REGISTRY ================= -->
   <section class="registry" id="registry">
@@ -432,7 +590,7 @@
   <footer class="foot">
     <div class="monogram">V <span style="color:var(--amaranth);font-style:italic">&amp;</span> K</div>
     <!-- ✎ Names + date -->
-    <p>2027 </p>
+    <p>2027</p>
   </footer>
 
   <script>

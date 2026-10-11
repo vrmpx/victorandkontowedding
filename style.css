@@ -97,6 +97,11 @@ section {
   border-radius: 2px;
 }
 
+/* keep anchor targets from landing under the sticky nav */
+[id] {
+  scroll-margin-top: 4.5rem;
+}
+
 /* ---------- NAV ---------- */
 header.nav {
   position: sticky;
@@ -195,8 +200,8 @@ header.nav {
 }
 
 /* ---------- HERO BANNER (full-bleed photo) ---------- */
-/* ✎ Photo lives at images/hero.jpg — see the <figure class="hero-banner">
-       markup below for srcset notes. Falls back to a gradient if missing. */
+/* ✎ See the <figure class="hero-banner"> markup for srcset notes.
+       Falls back to a gradient if the photo is missing. */
 .hero-banner {
   position: relative;
   margin: 0;
@@ -221,7 +226,6 @@ header.nav {
   }
 }
 
-/* was: object-position: center; */
 .hero-banner img {
   width: 100%;
   height: 100%;
@@ -232,7 +236,6 @@ header.nav {
   display: block;
 }
 
-/* was: height: 36% with the mix stop at 46% */
 .hero-banner::after {
   content: "";
   position: absolute;
@@ -546,10 +549,15 @@ header.nav {
   margin: 0;
   overflow: hidden;
   aspect-ratio: 1 / 1;
-  padding: 8px 8px 26px;
-  background: var(--sand);
+  padding: 10px 10px 30px;
+  /* was 8px 8px 26px */
+  background: #FAF7EE;
+  /* was var(--sand) */
   border: 1px solid var(--line);
-  box-shadow: 0 10px 24px -20px rgba(43, 36, 28, .7);
+  box-shadow: 0 2px 4px rgba(43, 36, 28, .12),
+    0 18px 36px -20px rgba(43, 36, 28, .7);
+  /* was 0 10px 24px -20px … */
+  transition: transform .4s ease;
 }
 
 .grid figure .shot {
@@ -558,6 +566,22 @@ header.nav {
   overflow: hidden;
   position: relative;
   background: linear-gradient(135deg, var(--steel), var(--olive));
+}
+
+.grid figure:nth-child(odd) {
+  transform: rotate(-1deg);
+}
+
+.grid figure:nth-child(even) {
+  transform: rotate(0.8deg);
+}
+
+.grid figure:nth-child(3n) {
+  transform: rotate(-0.4deg);
+}
+
+.grid figure:hover {
+  transform: none;
 }
 
 .grid figure:nth-child(3n) .shot {
@@ -598,7 +622,7 @@ header.nav {
   position: absolute;
   left: 10px;
   right: 10px;
-  bottom: 7px;
+  bottom: 9px;
   font-family: var(--mono);
   font-size: 0.68rem;
   letter-spacing: 0.05em;
@@ -707,11 +731,14 @@ header.nav {
   margin-bottom: 0.5rem;
 }
 
-.hood h4 {
+/* was h4 — now h3 for a correct heading outline; settings keep the old look */
+.hood h3 {
   font-family: var(--display);
   font-weight: 400;
   font-size: 1.2rem;
   line-height: 1.1;
+  letter-spacing: 0;
+  font-variation-settings: "SOFT" 30, "opsz" 24;
   color: var(--sand);
   margin-bottom: 0.45rem;
 }
@@ -722,9 +749,66 @@ header.nav {
   font-size: 0.95rem;
 }
 
+/* extra breathing room when the sprig sits between two colored sections */
+.sprig-band {
+  padding-block: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+/* ---------- FOOD & DRINK (extends .hood) ---------- */
+.eat {
+  display: flex;
+  flex-direction: column;
+}
+
+.hood h3 a {
+  text-decoration: none;
+}
+
+.hood h3 a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+
+.eat-notes {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 0.3rem;
+}
+
+.eat-notes>div {
+  display: grid;
+  grid-template-columns: 3.6rem 1fr;
+  gap: 0.6rem;
+  align-items: baseline;
+}
+
+.eat-notes dt {
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--gold) 75%, white);
+}
+
+.eat-notes dd {
+  font-size: 0.95rem;
+  color: color-mix(in srgb, var(--sand) 82%, transparent);
+}
+
+.eat .where {
+  font-family: var(--mono);
+  font-style: normal;
+  font-size: 0.7rem;
+  line-height: 1.6;
+  opacity: 0.7;
+  margin-top: auto;
+  padding-top: 0.9rem;
+}
+
+
 /* ---------- KNOW BEFORE YOU GO ---------- */
 .know {
-  background: var(--sand);
+  background: var(--paper);
 }
 
 .know .head {
@@ -751,7 +835,7 @@ header.nav {
 
 .info {
   position: relative;
-  background: var(--paper);
+  background: var(--sand);
   border: 1px solid var(--line);
   padding: clamp(1.5rem, 3vw, 2.1rem);
 }
@@ -803,6 +887,7 @@ header.nav {
   display: grid;
   gap: clamp(1rem, 2.5vw, 1.5rem);
   grid-template-columns: 1fr;
+  margin-top: 1.6rem;
 }
 
 @media (min-width: 720px) {
@@ -817,11 +902,14 @@ header.nav {
   }
 }
 
+/* sand cards inside the amaranth section: reset text to ink,
+   otherwise titles + addresses inherit sand-on-sand and vanish */
 .spot {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   background: var(--sand);
+  color: var(--ink);
   border: 1px solid var(--line);
   padding: 1.5rem 1.5rem 1.6rem;
 }
@@ -833,13 +921,16 @@ header.nav {
   color: var(--amaranth);
 }
 
-.spot h3 {
+.stay .spot h3 {
   font-size: 1.32rem;
+  color: var(--ink);
+  margin-bottom: 0;
 }
 
-.spot p {
+.stay .spot p {
   font-size: 0.97rem;
   color: color-mix(in srgb, var(--ink) 88%, transparent);
+  margin-bottom: 0;
 }
 
 .spot address {
@@ -854,7 +945,7 @@ header.nav {
 
 /* ---------- REGISTRY ---------- */
 .registry {
-  background: var(--panel);
+  background: var(--sand);
   text-align: center;
 }
 
@@ -962,25 +1053,25 @@ footer.foot p {
 }
 
 /* ---------- SCROLL REVEAL ---------- */
-.reveal {
+/* Scoped to .js (set in <head>) so content stays visible if JS fails */
+.js .reveal {
   opacity: 0;
   transform: translateY(22px);
   transition: opacity .7s ease, transform .7s ease;
 }
 
-.reveal.in {
+.js .reveal.in {
   opacity: 1;
   transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
+  .js .reveal {
     opacity: 1;
     transform: none;
     transition: none;
   }
 
-  .card,
   .grid img {
     transition: none;
   }
