@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RSVP · Victor &amp; Konto — 2027</title>
+  <meta name="description" content="RSVP for our celebration in Mexico City — 20 March 2027." />
+  <meta name="robots" content="noindex" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..600,0..100,0..1;1,9..144,300..500,0..100,0..1&amp;family=Hanken+Grotesk:wght@400;500;600&amp;family=Courier+Prime:ital,wght@0,400;0,700;1,400&amp;display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="rsvp.css">
+</head>
+
+<body>
+
+  <header class="nav">
+    <a href="../index2.html" class="monogram" style="text-decoration:none">V <span>&amp;</span> K</a>
+    <nav class="nav-links">
+      <a href="../index2.html#events" class="nav-hide">Details</a>
+      <a href="../index2.html#travel" class="nav-hide">Travel</a>
+      <a href="../index2.html#stay" class="nav-hide">Stay</a>
+      <a href="../index2.html#faq" class="nav-hide">FAQ</a>
+      <a href="../index2.html" class="btn ghost">Home</a>
+    </nav>
+  </header>
+
+  <main class="rsvp-page">
+    <section id="rsvp" class="rsvp-app" aria-labelledby="rsvp-title">
+
+      <div class="rsvp-head">
+        <span class="eyebrow" data-i18n="eyebrow">We can't wait to celebrate with you</span>
+        <h1 id="rsvp-title" data-i18n="title">Will you join us?</h1>
+        <p class="rsvp-lede" data-i18n="lede">Please RSVP by December 15, 2026.</p>
+      </div>
+
+      <div class="rsvp-card">
+
+        <noscript>
+          <p>This form needs JavaScript. You can also
+            <!-- ✎ same Google Form as fallbackUrl in rsvp.js -->
+            <a href="https://forms.gle/your-form-id">RSVP with our backup form</a>.</p>
+        </noscript>
+
+        <!-- Step 1: invite code -->
+        <form class="rsvp-step" id="rsvp-lookup" novalidate>
+          <label for="rsvp-code" data-i18n="codeLabel">Invitation code</label>
+          <div class="rsvp-row">
+            <input id="rsvp-code" name="code" autocomplete="off" autocapitalize="characters" spellcheck="false"
+              maxlength="12" required>
+            <button type="submit" class="btn" data-i18n="find">Find</button>
+          </div>
+          <p class="rsvp-hint" data-i18n="codeHint">You'll find it on your invitation.</p>
+        </form>
+
+        <!-- Step 2: per-guest answers -->
+        <form class="rsvp-step" id="rsvp-form" hidden novalidate>
+          <h2 id="rsvp-party"></h2>
+          <p class="rsvp-hint" id="rsvp-prev" hidden data-i18n="prevNote"></p>
+          <div id="rsvp-guests"></div>
+
+          <label for="rsvp-email" data-i18n="email"></label>
+          <input id="rsvp-email" type="email" autocomplete="email" maxlength="200">
+
+          <label for="rsvp-message" data-i18n="message"></label>
+          <textarea id="rsvp-message" rows="3" maxlength="1000"></textarea>
+
+          <div class="rsvp-hp" aria-hidden="true">
+            <label>Website <input id="rsvp-website" tabindex="-1" autocomplete="off"></label>
+          </div>
+
+          <div class="rsvp-actions">
+            <button type="button" class="rsvp-link" id="rsvp-back" data-i18n="back"></button>
+            <button type="submit" class="btn" data-i18n="submit"></button>
+          </div>
+        </form>
+
+        <!-- Step 3: done -->
+        <div class="rsvp-step rsvp-done" id="rsvp-done" hidden>
+          <p class="rsvp-big" id="rsvp-done-msg"></p>
+          <p><a href="../index2.html#events" class="btn ghost" data-i18n="seeDetails"></a></p>
+          <button type="button" class="rsvp-link" id="rsvp-edit" data-i18n="edit"></button>
+        </div>
+
+        <!-- Deadline passed -->
+        <div class="rsvp-step" id="rsvp-closed" hidden>
+          <p data-i18n="closed"></p>
+        </div>
+
+        <!-- Fallback: embedded Google Form -->
+        <div class="rsvp-step rsvp-fallback" id="rsvp-fallback" hidden>
+          <p data-i18n="fallbackNote"></p>
+          <iframe id="rsvp-iframe" title="RSVP form" loading="lazy"></iframe>
+          <p><a id="rsvp-fallback-link" target="_blank" rel="noopener" data-i18n="fallbackOpen"></a></p>
+        </div>
+
+        <p class="rsvp-status" id="rsvp-status" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="monogram">V <span style="color:var(--amaranth);font-style:italic">&amp;</span> K</div>
+    <p>2027</p>
+  </footer>
+
+  <script src="rsvp.js" defer></script>
+</body>
+
+</html>

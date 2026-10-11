@@ -1,0 +1,59 @@
+<!-- RSVP section: drop into your page. Needs rsvp.css + rsvp.js. -->
+<section id="rsvp" class="rsvp" aria-labelledby="rsvp-title">
+  <h2 id="rsvp-title" data-i18n="title"></h2>
+  <p class="rsvp-lede" data-i18n="lede"></p>
+
+  <!-- Step 1: invite code -->
+  <form class="rsvp-step" id="rsvp-lookup" novalidate>
+    <label for="rsvp-code" data-i18n="codeLabel"></label>
+    <div class="rsvp-row">
+      <input id="rsvp-code" name="code" autocomplete="off" autocapitalize="characters"
+             spellcheck="false" maxlength="12" required>
+      <button type="submit" data-i18n="find"></button>
+    </div>
+    <p class="rsvp-hint" data-i18n="codeHint"></p>
+  </form>
+
+  <!-- Step 2: per-guest answers -->
+  <form class="rsvp-step" id="rsvp-form" hidden novalidate>
+    <h3 id="rsvp-party"></h3>
+    <p class="rsvp-hint" id="rsvp-prev" hidden data-i18n="prevNote"></p>
+    <div id="rsvp-guests"></div>
+
+    <label for="rsvp-email" data-i18n="email"></label>
+    <input id="rsvp-email" type="email" autocomplete="email" maxlength="200">
+
+    <label for="rsvp-message" data-i18n="message"></label>
+    <textarea id="rsvp-message" rows="3" maxlength="1000"></textarea>
+
+    <div class="rsvp-hp" aria-hidden="true">
+      <label>Website <input id="rsvp-website" tabindex="-1" autocomplete="off"></label>
+    </div>
+
+    <div class="rsvp-actions">
+      <button type="button" class="rsvp-link" id="rsvp-back" data-i18n="back"></button>
+      <button type="submit" data-i18n="submit"></button>
+    </div>
+  </form>
+
+  <!-- Step 3: done -->
+  <div class="rsvp-step" id="rsvp-done" hidden>
+    <p class="rsvp-big" id="rsvp-done-msg"></p>
+    <button type="button" class="rsvp-link" id="rsvp-edit" data-i18n="edit"></button>
+  </div>
+
+  <!-- Deadline passed -->
+  <div class="rsvp-step" id="rsvp-closed" hidden>
+    <p data-i18n="closed"></p>
+  </div>
+
+  <!-- Fallback: embedded Google Form -->
+  <div class="rsvp-step rsvp-fallback" id="rsvp-fallback" hidden>
+    <p data-i18n="fallbackNote"></p>
+    <iframe id="rsvp-iframe" title="RSVP" loading="lazy"></iframe>
+    <p><a id="rsvp-fallback-link" target="_blank" rel="noopener" data-i18n="fallbackOpen"></a></p>
+  </div>
+
+  <p class="rsvp-status" id="rsvp-status" role="status" aria-live="polite"></p>
+</section>
+<script src="rsvp.js" defer></script>
