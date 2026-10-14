@@ -2,9 +2,9 @@
   /* ===== ✎ Configure here ===== */
   const CFG = {
     // Leave the placeholder in place to use demo mode (fake data, no backend) while styling locally.
-    endpoint: 'https://script.google.com/macros/s/PASTE_DEPLOYMENT_ID/exec',
+    endpoint: 'https://script.google.com/macros/s/AKfycbyfA1On_SuA4_jmtK4zmfJsHs2ndMwHI--AixHWoSskIEz5v9yquyO-6pMriqPrDKqUJg/exec',
     mode: 'custom',            // 'custom' | 'fallback'  ← flip to 'fallback' to force the Google Form
-    fallbackUrl: 'https://docs.google.com/forms/d/e/PASTE_FORM_ID/viewform?embedded=true',
+    fallbackUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScv4RTyJfWKPHZWegGGM_-L-Q5FJ5gT6PP_Od_iRszirX3iew/viewform?embedded=true',
     deadline: '2026-12-15T23:59:59-06:00', // keep in sync with Code.gs
     deadlineLabel: { en: 'December 15, 2026', es: '15 de diciembre de 2026' },
     timeoutMs: 15000,
