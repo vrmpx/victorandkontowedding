@@ -39,6 +39,15 @@
   color: color-mix(in srgb, var(--ink) 88%, transparent);
 }
 
+.rsvp-deadline {
+  margin-top: 0.8rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amaranth);
+}
+
 /* ---------- card ---------- */
 .rsvp-card {
   position: relative;

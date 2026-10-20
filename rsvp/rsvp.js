@@ -16,7 +16,8 @@
     en: {
       eyebrow: "We can't wait to celebrate with you",
       title: 'Will you join us?',
-      lede: "Let us know you're coming. It takes a minute, and it means everything. Please RSVP by {deadline}.",
+      lede: "Let us know you're coming. It takes a minute, and it means everything.",
+      deadlineNote: 'Please RSVP by {deadline}',
       codeLabel: 'Invitation code',
       codeHint: "You'll find it on your invitation.",
       find: 'Find',
@@ -48,7 +49,8 @@
     es: {
       eyebrow: 'No podemos esperar a celebrar contigo',
       title: '¿Nos acompañas?',
-      lede: 'Avísanos si vienes. Toma un minuto y significa muchísimo. Por favor confirma antes del {deadline}.',
+      lede: 'Avísanos si vienes. Toma un minuto y significa muchísimo.',
+      deadlineNote: 'Por favor confirma antes del {deadline}',
       codeLabel: 'Código de invitación',
       codeHint: 'Lo encuentras en tu invitación.',
       find: 'Buscar',
