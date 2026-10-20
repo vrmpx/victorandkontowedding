@@ -646,6 +646,16 @@ header.nav {
   color: var(--amaranth);
 }
 
+@media (max-width: 719px) {
+  .grid figcaption {
+    display: none;
+  }
+
+  .grid figure {
+    padding: 8px;
+  }
+}
+
 /* ---------- TRAVEL (amaranth feature) ---------- */
 .stay {
   background: var(--amaranth);
