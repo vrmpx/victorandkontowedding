@@ -5,8 +5,8 @@
     endpoint: 'https://script.google.com/macros/s/AKfycbyfA1On_SuA4_jmtK4zmfJsHs2ndMwHI--AixHWoSskIEz5v9yquyO-6pMriqPrDKqUJg/exec',
     mode: 'custom',            // 'custom' | 'fallback'  ← flip to 'fallback' to force the Google Form
     fallbackUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScv4RTyJfWKPHZWegGGM_-L-Q5FJ5gT6PP_Od_iRszirX3iew/viewform?embedded=true',
-    deadline: '2026-12-15T23:59:59-06:00', // keep in sync with Code.gs
-    deadlineLabel: { en: 'December 15, 2026', es: '15 de diciembre de 2026' },
+    deadline: '2026-12-20T23:59:59-06:00', // keep in sync with Code.gs
+    deadlineLabel: { en: 'December 20, 2026', es: '20 de diciembre de 2026' },
     timeoutMs: 15000,
     failuresBeforeFallback: 2, // consecutive network/server errors before switching to the form
   };
@@ -318,8 +318,6 @@
 
   if (CFG.mode === 'fallback') {
     fallback();
-  } else if (new Date() > new Date(CFG.deadline)) {
-    show('closed');
   } else {
     if (DEMO) status(t('demo'));
     // Personal links: https://yourdomain/rsvp/?code=ABC123
