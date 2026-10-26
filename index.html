@@ -567,7 +567,7 @@
         </div>
         <div class="gift">
           <span class="gift-label">
-            <span class="gift-icon" style="--icon:url('Images/paypal.svg')" aria-hidden="true"></span>
+            <span class="gift-icon" style="--icon:url('images/paypal.svg')" aria-hidden="true"></span>
             PayPal
           </span>
           <!-- ✎ Your PayPal.me username -->
@@ -624,6 +624,17 @@
     </div>
   </section>
 
+  <!-- ================= LIGHTBOX ================= -->
+  <dialog class="lightbox" id="lightbox" aria-label="Photo viewer">
+    <button class="lb-btn lb-close" type="button" aria-label="Close">&times;</button>
+    <button class="lb-btn lb-prev" type="button" aria-label="Previous photo">&lsaquo;</button>
+    <figure>
+      <img alt="" />
+      <figcaption class="lb-cap"></figcaption>
+    </figure>
+    <button class="lb-btn lb-next" type="button" aria-label="Next photo">&rsaquo;</button>
+  </dialog>
+
   <footer class="foot">
     <div class="monogram">V <span style="color:var(--amaranth);font-style:italic">&amp;</span> K</div>
     <!-- ✎ Names + date -->
@@ -636,15 +647,15 @@
       var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var els = document.querySelectorAll('.reveal');
       if (reduce || !('IntersectionObserver' in window)) {
-        els.forEach(function (el) { el.classList.add('in'); });
+        els.forEach(function (el) {el.classList.add('in');});
         return;
       }
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
-          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+          if (e.isIntersecting) {e.target.classList.add('in'); io.unobserve(e.target);}
         });
-      }, { threshold: 0.12 });
-      els.forEach(function (el) { io.observe(el); });
+      }, {threshold: 0.12});
+      els.forEach(function (el) {io.observe(el);});
     })();
 
     /* ---------- Countdown ---------- */
@@ -657,10 +668,10 @@
         h = document.querySelector('[data-hours]'),
         m = document.querySelector('[data-mins]'),
         s = document.querySelector('[data-secs]');
-      function pad(n) { return String(n).padStart(2, '0'); }
+      function pad(n) {return String(n).padStart(2, '0');}
       function tick() {
         var diff = target - Date.now();
-        if (diff <= 0) { d.textContent = h.textContent = m.textContent = s.textContent = '00'; return; }
+        if (diff <= 0) {d.textContent = h.textContent = m.textContent = s.textContent = '00'; return;}
         d.textContent = Math.floor(diff / 86400000);
         h.textContent = pad(Math.floor(diff % 86400000 / 3600000));
         m.textContent = pad(Math.floor(diff % 3600000 / 60000));
@@ -674,10 +685,64 @@
       btn.addEventListener('click', function () {
         navigator.clipboard.writeText(btn.dataset.copy).then(function () {
           btn.textContent = 'Copied!';
-          setTimeout(function () { btn.textContent = original; }, 1500);
+          setTimeout(function () {btn.textContent = original;}, 1500);
         });
       });
     });
+    /* ---------- Lightbox ---------- */
+    (function () {
+      var lb = document.getElementById('lightbox');
+      if (!lb || typeof lb.showModal !== 'function') return;
+      var big = lb.querySelector('img'), cap = lb.querySelector('.lb-cap');
+      var prev = lb.querySelector('.lb-prev'), next = lb.querySelector('.lb-next');
+      // ✎ Which photos are zoomable — drop '.hero-banner img' to limit it to the gallery
+      var imgs = Array.from(document.querySelectorAll('.hero-banner img, .grid img'));
+      var list = [], i = 0;
+
+      function render() {
+        var img = list[i];
+        big.src = img.currentSrc || img.src;
+        big.alt = img.alt;
+        var fc = img.closest('figure').querySelector('figcaption span');
+        cap.textContent = fc ? fc.textContent : img.alt;
+      }
+      function open(img) {
+        list = imgs.filter(function (el) {return el.complete && el.naturalWidth > 0;});
+        i = Math.max(0, list.indexOf(img));
+        prev.hidden = next.hidden = list.length < 2;
+        render();
+        lb.showModal();
+      }
+      function step(d) {i = (i + d + list.length) % list.length; render();}
+
+      imgs.forEach(function (img) {
+        img.tabIndex = 0;
+        img.setAttribute('role', 'button');
+        img.addEventListener('click', function () {open(img);});
+        img.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {e.preventDefault(); open(img);}
+        });
+      });
+
+      lb.querySelector('.lb-close').addEventListener('click', function () {lb.close();});
+      prev.addEventListener('click', function () {step(-1);});
+      next.addEventListener('click', function () {step(1);});
+      lb.addEventListener('click', function (e) {if (e.target === lb) lb.close();}); // click outside
+      lb.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft') step(-1);
+        if (e.key === 'ArrowRight') step(1);
+      });
+
+      // swipe on phones
+      var x0 = null;
+      lb.addEventListener('touchstart', function (e) {x0 = e.touches[0].clientX;}, {passive: true});
+      lb.addEventListener('touchend', function (e) {
+        if (x0 === null || list.length < 2) return;
+        var dx = e.changedTouches[0].clientX - x0;
+        if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1);
+        x0 = null;
+      });
+    })();
   </script>
 </body>
 
